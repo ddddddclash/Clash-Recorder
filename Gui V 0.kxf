@@ -1,0 +1,1614 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<object type="TAForm" name="Form1_1">
+	<properties>
+		<property name="Left" vt="Int16">388</property>
+		<property name="Top" vt="Int16">195</property>
+		<property name="Width" vt="Int16">724</property>
+		<property name="Height" vt="Int16">669</property>
+		<property name="Caption" vt="String">Form1</property>
+		<property name="Color" vt="Ident">clBtnFace</property>
+		<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+		<property name="Font.Color" vt="Ident">clWindowText</property>
+		<property name="Font.Height" vt="Int8">-11</property>
+		<property name="Font.Name" vt="String">MS Sans Serif</property>
+		<property name="Font.Style" vt="Set"/>
+		<property name="OldCreateOrder" vt="False">False</property>
+		<property name="Visible" vt="True">True</property>
+		<property name="Style" vt="Int32">-1798701056</property>
+		<property name="ExStyle" vt="Int16">256</property>
+		<property name="Version" vt="String">1.04</property>
+		<property name="FormOptOnEvent" vt="False">False</property>
+		<property name="FormOptExpVars" vt="False">False</property>
+		<property name="FormOptPopulate" vt="False">False</property>
+		<property name="FormOptVarsForSet" vt="False">False</property>
+		<property name="FormOptIndentChar" vt="Int8">0</property>
+		<property name="FormOptIndentCount" vt="Int8">1</property>
+		<property name="FormOptIndentInit" vt="Int8">0</property>
+		<property name="FormOptVarScope" vt="Int8">0</property>
+		<property name="Resizing" vt="Set"/>
+		<property name="PixelsPerInch" vt="Int8">96</property>
+		<property name="TextHeight" vt="Int8">13</property>
+	</properties>
+	<components>
+		<object type="TAStatusBar" name="StatusBar1">
+			<properties>
+				<property name="Left" vt="Int8">0</property>
+				<property name="Top" vt="Int16">649</property>
+				<property name="Width" vt="Int16">691</property>
+				<property name="Height" vt="Int8">19</property>
+				<property name="Panels" vt="Collection">
+					<collection/>
+				</property>
+				<property name="CtrlStyle" vt="Int32">1342177280</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAToolBar" name="ToolBar1">
+			<properties>
+				<property name="Left" vt="Int8">0</property>
+				<property name="Top" vt="Int8">0</property>
+				<property name="Width" vt="Int16">691</property>
+				<property name="Height" vt="Int8">28</property>
+				<property name="Caption" vt="String">ToolBar1</property>
+				<property name="EdgeBorders" vt="Set"/>
+				<property name="Flat" vt="True">True</property>
+				<property name="TabOrder" vt="Int8">1</property>
+				<property name="CtrlStyle" vt="Int32">1409288192</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TATab" name="Tabs">
+			<properties>
+				<property name="Left" vt="Int8">0</property>
+				<property name="Top" vt="Int8">32</property>
+				<property name="Width" vt="Int16">689</property>
+				<property name="Height" vt="Int16">617</property>
+				<property name="ActivePage" vt="Ident">TabSheet4</property>
+				<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+				<property name="Font.Color" vt="Ident">clWindowText</property>
+				<property name="Font.Height" vt="Int8">-11</property>
+				<property name="Font.Name" vt="String">Arial</property>
+				<property name="Font.Style" vt="Set"/>
+				<property name="ParentFont" vt="False">False</property>
+				<property name="TabOrder" vt="Int8">2</property>
+				<property name="CtrlStyle" vt="Int32">1409482752</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components>
+				<object type="TTabSheet" name="TabSheet1">
+					<properties>
+						<property name="Caption" vt="String">Clan</property>
+						<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+						<property name="Font.Color" vt="Ident">clWindowText</property>
+						<property name="Font.Height" vt="Int8">-11</property>
+						<property name="Font.Name" vt="String">MS Sans Serif</property>
+						<property name="Font.Style" vt="Set"/>
+						<property name="ImageIndex" vt="Int8">-1</property>
+						<property name="ParentFont" vt="False">False</property>
+					</properties>
+					<components>
+						<object type="TAInput" name="clan_name">
+							<properties>
+								<property name="Left" vt="Int8">124</property>
+								<property name="Top" vt="Int8">44</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">0</property>
+								<property name="Text" vt="String">clan_name</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label1">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int8">47</property>
+								<property name="Width" vt="Int8">56</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Clan Name</property>
+								<property name="TabOrder" vt="Int8">1</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label2">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int8">76</property>
+								<property name="Width" vt="Int8">61</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Clan ID Tag</property>
+								<property name="TabOrder" vt="Int8">2</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="clan_tag">
+							<properties>
+								<property name="Left" vt="Int8">124</property>
+								<property name="Top" vt="Int8">71</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">3</property>
+								<property name="Text" vt="String">clan_tag</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAButton" name="Button1">
+							<properties>
+								<property name="Left" vt="Int16">492</property>
+								<property name="Top" vt="Int8">15</property>
+								<property name="Width" vt="Int8">91</property>
+								<property name="Height" vt="Int8">25</property>
+								<property name="Caption" vt="String">Take Snapshot</property>
+								<property name="TabOrder" vt="Int8">4</property>
+								<property name="Color" vt="Ident">clBtnFace</property>
+								<property name="CtrlStyle" vt="Int32">1342373888</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label15">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int8">106</property>
+								<property name="Width" vt="Int8">64</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Badge Level</property>
+								<property name="TabOrder" vt="Int8">5</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="badge_level">
+							<properties>
+								<property name="Left" vt="Int8">124</property>
+								<property name="Top" vt="Int8">103</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">6</property>
+								<property name="Text" vt="String">badge_level</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label16">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">135</property>
+								<property name="Width" vt="Int8">81</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Clan Experience</property>
+								<property name="TabOrder" vt="Int8">7</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label17">
+							<properties>
+								<property name="Left" vt="Int16">180</property>
+								<property name="Top" vt="Int16">137</property>
+								<property name="Width" vt="Int8">9</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">/</property>
+								<property name="TabOrder" vt="Int8">8</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="clan_experience">
+							<properties>
+								<property name="Left" vt="Int8">124</property>
+								<property name="Top" vt="Int16">135</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">9</property>
+								<property name="Text" vt="String">clan_experience</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="clan_experience_goal">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">135</property>
+								<property name="Width" vt="Int8">49</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">10</property>
+								<property name="Text" vt="String">clan_experience_goal</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label18">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">191</property>
+								<property name="Width" vt="Int8">63</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Total Points:</property>
+								<property name="TabOrder" vt="Int8">11</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label19">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">216</property>
+								<property name="Width" vt="Int8">58</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Wars Won:</property>
+								<property name="TabOrder" vt="Int8">12</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label20">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">241</property>
+								<property name="Width" vt="Int8">50</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Members:</property>
+								<property name="TabOrder" vt="Int8">13</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label21">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">266</property>
+								<property name="Width" vt="Int8">31</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Type:</property>
+								<property name="TabOrder" vt="Int8">14</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label22">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">292</property>
+								<property name="Width" vt="Int8">90</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Required trophies:</property>
+								<property name="TabOrder" vt="Int8">15</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label23">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">317</property>
+								<property name="Width" vt="Int8">80</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">War Frequency:</property>
+								<property name="TabOrder" vt="Int8">16</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label24">
+							<properties>
+								<property name="Left" vt="Int8">26</property>
+								<property name="Top" vt="Int16">342</property>
+								<property name="Width" vt="Int8">72</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Clan Location:</property>
+								<property name="TabOrder" vt="Int8">17</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="total_points">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">191</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">18</property>
+								<property name="Text" vt="String">total_points</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="wars_won">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">216</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">19</property>
+								<property name="Text" vt="String">wars_won</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="num_members">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">241</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">20</property>
+								<property name="Text" vt="String">num_members</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="type">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">266</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">21</property>
+								<property name="Text" vt="String">type</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="required_trophies">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">292</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">22</property>
+								<property name="Text" vt="String">required_trophies</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="war_frequency">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">317</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">23</property>
+								<property name="Text" vt="String">war_frequency</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="clan_location">
+							<properties>
+								<property name="Left" vt="Int16">140</property>
+								<property name="Top" vt="Int16">342</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">24</property>
+								<property name="Text" vt="String">clan_location</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+					</components>
+				</object>
+				<object type="TTabSheet" name="TabSheet2">
+					<properties>
+						<property name="Caption" vt="String">Profile</property>
+						<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+						<property name="Font.Color" vt="Ident">clWindowText</property>
+						<property name="Font.Height" vt="Int8">-11</property>
+						<property name="Font.Name" vt="String">MS Sans Serif</property>
+						<property name="Font.Style" vt="Set"/>
+						<property name="ImageIndex" vt="Int8">-1</property>
+						<property name="ParentFont" vt="False">False</property>
+					</properties>
+					<components>
+						<object type="TAButton" name="Button2">
+							<properties>
+								<property name="Left" vt="Int16">292</property>
+								<property name="Top" vt="Int16">191</property>
+								<property name="Width" vt="Int8">91</property>
+								<property name="Height" vt="Int8">25</property>
+								<property name="Caption" vt="String">Take Snapshot</property>
+								<property name="TabOrder" vt="Int8">0</property>
+								<property name="Color" vt="Ident">clBtnFace</property>
+								<property name="CtrlStyle" vt="Int32">1342373888</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label3">
+							<properties>
+								<property name="Left" vt="Int8">20</property>
+								<property name="Top" vt="Int8">23</property>
+								<property name="Width" vt="Int8">64</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Player Name</property>
+								<property name="TabOrder" vt="Int8">1</property>
+								<property name="OnClick" vt="String">Label3Click</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic1">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">199</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\barb_king.jpg</property>
+								<property name="TabOrder" vt="Int8">2</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic2">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">199</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\arch_queen.jpg</property>
+								<property name="TabOrder" vt="Int8">3</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic3">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\barbarian.jpg</property>
+								<property name="TabOrder" vt="Int8">4</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic4">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\archer.jpg</property>
+								<property name="TabOrder" vt="Int8">5</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic5">
+							<properties>
+								<property name="Left" vt="Int16">148</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\giant.jpg</property>
+								<property name="TabOrder" vt="Int8">6</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic6">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\goblin.jpg</property>
+								<property name="TabOrder" vt="Int8">7</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic7">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\wallbreaker.jpg</property>
+								<property name="TabOrder" vt="Int8">8</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic8">
+							<properties>
+								<property name="Left" vt="Int16">292</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\balloon.jpg</property>
+								<property name="TabOrder" vt="Int8">9</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic9">
+							<properties>
+								<property name="Left" vt="Int16">340</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\wizard.jpg</property>
+								<property name="TabOrder" vt="Int8">10</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic10">
+							<properties>
+								<property name="Left" vt="Int16">388</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">42</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\healer.jpg</property>
+								<property name="TabOrder" vt="Int8">11</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic11">
+							<properties>
+								<property name="Left" vt="Int16">436</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\dragon.jpg</property>
+								<property name="TabOrder" vt="Int8">12</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic12">
+							<properties>
+								<property name="Left" vt="Int16">484</property>
+								<property name="Top" vt="Int16">271</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\pekka.jpg</property>
+								<property name="TabOrder" vt="Int8">13</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic13">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">351</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\minon.jpg</property>
+								<property name="TabOrder" vt="Int8">14</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic14">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">351</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\hogridder.jpg</property>
+								<property name="TabOrder" vt="Int8">15</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic15">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">351</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\golem.jpg</property>
+								<property name="TabOrder" vt="Int8">16</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic16">
+							<properties>
+								<property name="Left" vt="Int16">148</property>
+								<property name="Top" vt="Int16">351</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\valk.jpg</property>
+								<property name="TabOrder" vt="Int8">17</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic17">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int16">351</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\witch.jpg</property>
+								<property name="TabOrder" vt="Int8">18</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic18">
+							<properties>
+								<property name="Left" vt="Int16">292</property>
+								<property name="Top" vt="Int16">351</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">40</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\lavahound.jpg</property>
+								<property name="TabOrder" vt="Int8">19</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic19">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\lightning.jpg</property>
+								<property name="TabOrder" vt="Int8">20</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic20">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\heal.jpg</property>
+								<property name="TabOrder" vt="Int8">21</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic21">
+							<properties>
+								<property name="Left" vt="Int16">148</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\rage.jpg</property>
+								<property name="TabOrder" vt="Int8">22</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic22">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\jump.jpg</property>
+								<property name="TabOrder" vt="Int8">23</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic23">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">42</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\freeze.jpg</property>
+								<property name="TabOrder" vt="Int8">24</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic24">
+							<properties>
+								<property name="Left" vt="Int16">377</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\poison.jpg</property>
+								<property name="TabOrder" vt="Int8">25</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic25">
+							<properties>
+								<property name="Left" vt="Int16">420</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">44</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\earthquake.jpg</property>
+								<property name="TabOrder" vt="Int8">26</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAPic" name="Pic26">
+							<properties>
+								<property name="Left" vt="Int16">464</property>
+								<property name="Top" vt="Int16">431</property>
+								<property name="Width" vt="Int8">43</property>
+								<property name="Height" vt="Int8">42</property>
+								<property name="CtrlStyle" vt="Int32">1342308622</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="PicturePath" vt="String">C:\_Programming\Local - autoit\Clash Recorder\images\haste.jpg</property>
+								<property name="TabOrder" vt="Int8">27</property>
+								<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nbarb_king">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">247</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">28</property>
+								<property name="Text" vt="String">nbarb_king</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="narch_queen">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">247</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">29</property>
+								<property name="Text" vt="String">narch_queen</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nbarbarian">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">30</property>
+								<property name="Text" vt="String">nbarbarian</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="narcher">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">31</property>
+								<property name="Text" vt="String">narcher</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="ngiant">
+							<properties>
+								<property name="Left" vt="Int16">148</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">32</property>
+								<property name="Text" vt="String">ngiant</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="ngoblin">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">33</property>
+								<property name="Text" vt="String">ngoblin</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nwallbreaker">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">34</property>
+								<property name="Text" vt="String">nwallbreaker</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nballoon">
+							<properties>
+								<property name="Left" vt="Int16">292</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">35</property>
+								<property name="Text" vt="String">nballoon</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nwizard">
+							<properties>
+								<property name="Left" vt="Int16">340</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">36</property>
+								<property name="Text" vt="String">nwizard</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nhealer">
+							<properties>
+								<property name="Left" vt="Int16">388</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">37</property>
+								<property name="Text" vt="String">nhealer</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="ndragon">
+							<properties>
+								<property name="Left" vt="Int16">436</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">38</property>
+								<property name="Text" vt="String">ndragon</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="npekka">
+							<properties>
+								<property name="Left" vt="Int16">484</property>
+								<property name="Top" vt="Int16">319</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">39</property>
+								<property name="Text" vt="String">npekka</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nminion">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">399</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">40</property>
+								<property name="Text" vt="String">nminion</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nhog">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">399</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">41</property>
+								<property name="Text" vt="String">nhog</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nvalk">
+							<properties>
+								<property name="Left" vt="Int16">148</property>
+								<property name="Top" vt="Int16">399</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">42</property>
+								<property name="Text" vt="String">nvalk</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="ngolem">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">399</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">43</property>
+								<property name="Text" vt="String">ngolem</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nwitch">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int16">399</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">44</property>
+								<property name="Text" vt="String">nwitch</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nlavahound">
+							<properties>
+								<property name="Left" vt="Int16">292</property>
+								<property name="Top" vt="Int16">399</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">45</property>
+								<property name="Text" vt="String">nlavahound</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nlightning">
+							<properties>
+								<property name="Left" vt="Int8">52</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">46</property>
+								<property name="Text" vt="String">nlightning</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nheal">
+							<properties>
+								<property name="Left" vt="Int8">100</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">47</property>
+								<property name="Text" vt="String">nheal</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="Input1">
+							<properties>
+								<property name="Left" vt="Int16">148</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">48</property>
+								<property name="Text" vt="String">nrage</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="njump">
+							<properties>
+								<property name="Left" vt="Int16">196</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">49</property>
+								<property name="Text" vt="String">njump</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nfreeze">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">50</property>
+								<property name="Text" vt="String">nfreeze</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="npoison">
+							<properties>
+								<property name="Left" vt="Int16">372</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">51</property>
+								<property name="Text" vt="String">npoison</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nearthquake">
+							<properties>
+								<property name="Left" vt="Int16">420</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">52</property>
+								<property name="Text" vt="String">nearthquake</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="nhaste">
+							<properties>
+								<property name="Left" vt="Int16">468</property>
+								<property name="Top" vt="Int16">479</property>
+								<property name="Width" vt="Int8">41</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">53</property>
+								<property name="Text" vt="String">nhaste</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="player_name">
+							<properties>
+								<property name="Left" vt="Int8">92</property>
+								<property name="Top" vt="Int8">21</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">54</property>
+								<property name="Text" vt="String">player_name</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label4">
+							<properties>
+								<property name="Left" vt="Int8">28</property>
+								<property name="Top" vt="Int8">55</property>
+								<property name="Width" vt="Int8">55</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Player Tag</property>
+								<property name="TabOrder" vt="Int8">55</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="player_tag">
+							<properties>
+								<property name="Left" vt="Int8">92</property>
+								<property name="Top" vt="Int8">53</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">56</property>
+								<property name="Text" vt="String">player_tag</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label5">
+							<properties>
+								<property name="Left" vt="Int8">20</property>
+								<property name="Top" vt="Int8">87</property>
+								<property name="Width" vt="Int8">65</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Clan Position</property>
+								<property name="TabOrder" vt="Int8">57</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TACombo" name="clan_position">
+							<properties>
+								<property name="Left" vt="Int8">92</property>
+								<property name="Top" vt="Int8">87</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">25</property>
+								<property name="ItemHeight" vt="Int8">13</property>
+								<property name="TabOrder" vt="Int8">58</property>
+								<property name="Text" vt="String">clan_position</property>
+								<property name="Items.Strings" vt="List">
+									<list>
+										<li vt="String">Member</li>
+										<li vt="String">Elder</li>
+										<li vt="String">Co-Leader</li>
+										<li vt="String">Leader</li>
+									</list>
+								</property>
+								<property name="CtrlStyle" vt="Int32">1342374466</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label6">
+							<properties>
+								<property name="Left" vt="Int8">28</property>
+								<property name="Top" vt="Int8">119</property>
+								<property name="Width" vt="Int8">57</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Experience</property>
+								<property name="TabOrder" vt="Int8">59</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="player_xp">
+							<properties>
+								<property name="Left" vt="Int8">92</property>
+								<property name="Top" vt="Int8">119</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">60</property>
+								<property name="Text" vt="String">player_xp</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="trophees">
+							<properties>
+								<property name="Left" vt="Int16">316</property>
+								<property name="Top" vt="Int8">23</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">61</property>
+								<property name="Text" vt="String">trophees</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label7">
+							<properties>
+								<property name="Left" vt="Int16">252</property>
+								<property name="Top" vt="Int8">23</property>
+								<property name="Width" vt="Int8">52</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Trophees:</property>
+								<property name="TabOrder" vt="Int8">62</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label8">
+							<properties>
+								<property name="Left" vt="Int16">228</property>
+								<property name="Top" vt="Int8">87</property>
+								<property name="Width" vt="Int8">77</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">War Stars Won</property>
+								<property name="TabOrder" vt="Int8">63</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="war_stars_won">
+							<properties>
+								<property name="Left" vt="Int16">316</property>
+								<property name="Top" vt="Int8">79</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">64</property>
+								<property name="Text" vt="String">war_stars_won</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label9">
+							<properties>
+								<property name="Left" vt="Int16">244</property>
+								<property name="Top" vt="Int8">55</property>
+								<property name="Width" vt="Int8">63</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">All time best:</property>
+								<property name="TabOrder" vt="Int8">65</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="all_time_best">
+							<properties>
+								<property name="Left" vt="Int16">316</property>
+								<property name="Top" vt="Int8">55</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">66</property>
+								<property name="Text" vt="String">all_time_best</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label10">
+							<properties>
+								<property name="Left" vt="Int16">252</property>
+								<property name="Top" vt="Int8">119</property>
+								<property name="Width" vt="Int8">52</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Town Hall</property>
+								<property name="TabOrder" vt="Int8">67</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TACombo" name="town_hall">
+							<properties>
+								<property name="Left" vt="Int16">316</property>
+								<property name="Top" vt="Int8">119</property>
+								<property name="Width" vt="Int8">49</property>
+								<property name="Height" vt="Int8">25</property>
+								<property name="ItemHeight" vt="Int8">13</property>
+								<property name="TabOrder" vt="Int8">68</property>
+								<property name="Text" vt="String">town_hall</property>
+								<property name="Items.Strings" vt="List">
+									<list>
+										<li vt="String">4</li>
+										<li vt="String">5</li>
+										<li vt="String">6</li>
+										<li vt="String">7</li>
+										<li vt="String">8</li>
+										<li vt="String">9</li>
+										<li vt="String">10</li>
+									</list>
+								</property>
+								<property name="CtrlStyle" vt="Int32">1342374466</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label11">
+							<properties>
+								<property name="Left" vt="Int16">468</property>
+								<property name="Top" vt="Int8">31</property>
+								<property name="Width" vt="Int8">81</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Troops Donated</property>
+								<property name="TabOrder" vt="Int8">69</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label12">
+							<properties>
+								<property name="Left" vt="Int16">463</property>
+								<property name="Top" vt="Int8">60</property>
+								<property name="Width" vt="Int8">86</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Troops Recieved</property>
+								<property name="TabOrder" vt="Int8">70</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label13">
+							<properties>
+								<property name="Left" vt="Int16">480</property>
+								<property name="Top" vt="Int8">90</property>
+								<property name="Width" vt="Int8">69</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Attacks Won:</property>
+								<property name="TabOrder" vt="Int8">71</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TALabel" name="Label14">
+							<properties>
+								<property name="Left" vt="Int16">471</property>
+								<property name="Top" vt="Int8">119</property>
+								<property name="Width" vt="Int8">78</property>
+								<property name="Height" vt="Int8">17</property>
+								<property name="Caption" vt="String">Defenses Won:</property>
+								<property name="TabOrder" vt="Int8">72</property>
+								<property name="HaveVariable" vt="False">False</property>
+								<property name="CtrlStyle" vt="Int32">1342308608</property>
+								<property name="CtrlExStyle" vt="Int8">0</property>
+								<property name="Resizing" vt="Set"/>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="troops_donated">
+							<properties>
+								<property name="Left" vt="Int16">556</property>
+								<property name="Top" vt="Int8">23</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">73</property>
+								<property name="Text" vt="String">troops_donated</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="troops_recieved">
+							<properties>
+								<property name="Left" vt="Int16">556</property>
+								<property name="Top" vt="Int8">55</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">74</property>
+								<property name="Text" vt="String">troops_recieved</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="attacks_won">
+							<properties>
+								<property name="Left" vt="Int16">556</property>
+								<property name="Top" vt="Int8">87</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">75</property>
+								<property name="Text" vt="String">attacks_won</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+						<object type="TAInput" name="defenses_won">
+							<properties>
+								<property name="Left" vt="Int16">556</property>
+								<property name="Top" vt="Int8">119</property>
+								<property name="Width" vt="Int8">121</property>
+								<property name="Height" vt="Int8">21</property>
+								<property name="TabOrder" vt="Int8">76</property>
+								<property name="Text" vt="String">defenses_won</property>
+								<property name="CtrlStyle" vt="Int32">1342374016</property>
+								<property name="CtrlExStyle" vt="Int16">512</property>
+								<property name="Resizing" vt="Set">DockHeight</property>
+							</properties>
+							<components/>
+						</object>
+					</components>
+				</object>
+				<object type="TTabSheet" name="TabSheet3">
+					<properties>
+						<property name="Caption" vt="String">Members</property>
+						<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+						<property name="Font.Color" vt="Ident">clWindowText</property>
+						<property name="Font.Height" vt="Int8">-11</property>
+						<property name="Font.Name" vt="String">MS Sans Serif</property>
+						<property name="Font.Style" vt="Set"/>
+						<property name="ImageIndex" vt="Int8">-1</property>
+						<property name="ParentFont" vt="False">False</property>
+					</properties>
+					<components/>
+				</object>
+				<object type="TTabSheet" name="TabSheet4">
+					<properties>
+						<property name="Caption" vt="String">War Players</property>
+						<property name="Font.Charset" vt="Ident">DEFAULT_CHARSET</property>
+						<property name="Font.Color" vt="Ident">clWindowText</property>
+						<property name="Font.Height" vt="Int8">-11</property>
+						<property name="Font.Name" vt="String">MS Sans Serif</property>
+						<property name="Font.Style" vt="Set"/>
+						<property name="ImageIndex" vt="Int8">-1</property>
+						<property name="ParentFont" vt="False">False</property>
+					</properties>
+					<components/>
+				</object>
+			</components>
+		</object>
+	</components>
+</object>
