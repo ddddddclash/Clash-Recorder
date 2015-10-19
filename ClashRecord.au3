@@ -13,7 +13,7 @@
 ;------------------------------------------------------------------------------------------
 
 ;Opt("MustDeclareVars",1)
-Opt("GUIOnEventMode",1)
+;Opt("GUIOnEventMode",1)
 Opt ("MouseClickDelay", 10)
 Opt ("MouseClickDownDelay", 10)
 Opt ("MouseCoordMode", 0)
@@ -26,7 +26,7 @@ Opt ("MouseCoordMode", 0)
 #include "lib/CR_Global_Const.au3"
 #include "lib/CR_Global.au3"
 #include "lib/CR_functions.au3"
-#include "lib/CR_GUI.au3"
+;#include "lib/CR_GUI.au3"
 
 HotKeySet ("{esc}", "Die")
 

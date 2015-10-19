@@ -23,6 +23,7 @@ EndFunc
 ;============================================================
 
 Func Go_clan($hwind)
+	ConsoleWrite("go_clan")
 	;WinActivate ($hwind)
 	ControlClick ($hwind, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
 	Sleep(500)
@@ -49,52 +50,66 @@ Func Go_War_Stats($hwind)
 	Sleep(1000)
 EndFunc
 
-Func WinGetClientPos($hwind)
-	local $aWin_Pos = WinGetPos($hwind)
-	Local $cSize = WinGetClientSize($hwind)
-	Local $padding = ($aWin_Pos[2] - $cSize[0]) /2
-	Local $header = $aWin_Pos[3] - $cSize[1] - $padding
 
-	Local $cPos[4]
-	$cPos[0] = $aWin_Pos[0] + $padding
-	$cPos[1] = $aWin_Pos[1] + $header
-	$cPos[2] =$cSize[0]
-	$cPos[3] =$cSize[1]
+; Returns the absolute position of the client window
+Func GetClientPos()
+   Local $cPos[4]
 
-	Return $cPos
+   ; Get absolute coordinates of client area
+   Local $hWnd = WinGetHandle($BS_title)
+   Local $cSize = WinGetClientSize($BS_title)
+
+   Local $tPoint = DllStructCreate("int X;int Y")
+   DllStructSetData($tPoint, "X", 0)
+   DllStructSetData($tPoint, "Y", 0)
+
+   _WinAPI_ClientToScreen($hWnd, $tPoint)
+   $cPos[0] = DllStructGetData($tPoint, "X")
+   $cPos[1] = DllStructGetData($tPoint, "Y")
+   $cPos[2] = $cPos[0]+$cSize[0]-1
+   $cPos[3] = $cPos[1]+$cSize[1]-1
+
+   Return $cPos
 EndFunc
-
 
 
 ;============================================================
 ; Function Mark_Rect
-; Draws a black rectangle and gets the left, top, bottom and right cordinates.
 ; Returns an array of 4 cordinages. [x1,y1,x2,y2]
 ;============================================================
 
+
+
 Func Mark_Rect($hwind)
+
+
+
+    local $aWin_Pos = WinGetPos($hwind)
+	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $aWin_Pos = ' & $aWin_Pos & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	local $aWin_Pos2 = GetClientPos()
+	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $aWin_Pos2 = ' & $aWin_Pos2 & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	local $aControl_Pos = ControlGetPos($hwind,"","[CLASS:BlueStacksApp; INSTANCE:1]")
+
     Local $aMouse_Pos, $hMask, $hMaster_Mask, $iTemp
-	Local $hRectangle_GUI, $hCross_GUI
-	Local $aWin_Pos = WinGetPos($hwind)
     Local $UserDLL = DllOpen("user32.dll")
+
 	Local $aLTRB[4]
-	Local $showTransparent = False
+	Local $r_padding = ($aWin_Pos[2] - $aControl_Pos[2]) /2
+	Local $r_left = $aWin_Pos[0] + $r_padding
+	Local $r_header = $aWin_Pos[3] - $aControl_Pos[3] - $r_padding
+	Local $r_top = $aWin_Pos[1] + $r_header
+
 
     ; Create transparent GUI with Cross cursor
-	$hCross_GUI = GUICreate("", $aWin_Pos[2], $aWin_Pos[3] ,$aWin_Pos[0] , $aWin_Pos[1] , $WS_POPUP, $WS_EX_TOPMOST)
-
-	If $showTransparent Then
-		GUISetBkColor(0x000000)
-		WinSetTrans($hCross_GUI, "", 200)
-	Else
-		WinSetTrans($hCross_GUI, "", 8)
-	EndIf
-
+	;$hCross_GUI = GUICreate("Test", $aControl_Pos[2], $aControl_Pos[3] ,$r_left , $r_top , $WS_POPUP, $WS_EX_TOPMOST)
+	Local $hCross_GUI = GUICreate("Test", $aWin_Pos[2], $aWin_Pos[3] ,$aWin_Pos[0] , $aWin_Pos[1] , $WS_POPUP, $WS_EX_TOPMOST)
+    WinSetTrans($hCross_GUI, "", 8)
     GUISetState(@SW_SHOW, $hCross_GUI)
     GUISetCursor(3, 1, $hCross_GUI)
 
-    $hRectangle_GUI = GUICreate("",  $aWin_Pos[2], $aWin_Pos[3], $aWin_Pos[0], $aWin_Pos[1], $WS_POPUP, $WS_EX_TOOLWINDOW + $WS_EX_TOPMOST)
-    GUISetBkColor(0x000000) ;Selection box color.
+   ; Global $hRectangle_GUI = GUICreate("",  $aControl_Pos[2], $aControl_Pos[3] ,$r_left , $r_top, $WS_POPUP, $WS_EX_TOOLWINDOW + $WS_EX_TOPMOST)
+    Global $hRectangle_GUI = GUICreate("",  $aWin_Pos[2], $aWin_Pos[3] ,$aWin_Pos[0] , $aWin_Pos[1], $WS_POPUP, $WS_EX_TOOLWINDOW + $WS_EX_TOPMOST)
+    GUISetBkColor(0x000000)
 
     ; Wait until mouse button pressed
     While Not _IsPressed("01", $UserDLL)
@@ -103,8 +118,8 @@ Func Mark_Rect($hwind)
 
     ; Get first mouse position
     $aMouse_Pos = MouseGetPos()
-    $iX1 = $aMouse_Pos[0]
-    $iY1 = $aMouse_Pos[1]
+    Local $iX1 = $aMouse_Pos[0]
+    Local $iY1 = $aMouse_Pos[1]
 
     ; Draw rectangle while mouse button pressed
     While _IsPressed("01", $UserDLL)
@@ -133,8 +148,8 @@ Func Mark_Rect($hwind)
     WEnd
 
     ; Get second mouse position
-    $iX2 = $aMouse_Pos[0]
-    $iY2 = $aMouse_Pos[1]
+    Local $iX2 = $aMouse_Pos[0]
+    Local $iY2 = $aMouse_Pos[1]
 
     ; Set in correct order if required
     If $iX2 < $iX1 Then
@@ -173,7 +188,7 @@ Func Draw_Rectangle($hwind, $left,$top,$right,$bottom)
 	;WinSetOnTop($hTrans_GUI, "", 1)
 	GuiSetState()
 	_DrawRectEx($hTrans_GUI, $left, $top, $right, $bottom, 1, 0x000)
-	$success = _ScreenCapture_CaptureWnd(Unique_Filename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
+	Local $success = _ScreenCapture_CaptureWnd(Unique_Filename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
 	If not $success Then
 		ConsoleWrite('>Error code: ' & @error & @CRLF)
 	EndIf
@@ -212,11 +227,15 @@ EndFunc ;==> Make_Image
 Func Unique_Filename($filename)
 	Local $temp = $filename
 	Local $iPosition = StringInStr($filename, ".", 0, -1)
-	$file_path_and_name = StringMid($filename,1,$iPosition-1)
-	$file_extention = StringMid($filename,$iPosition)
-	$i=1
+	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $iPosition = ' & $iPosition & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	Local $file_path_and_name = StringMid($filename,1,$iPosition-1)
+	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $file_path_and_name = ' & $file_path_and_name & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	Local $file_extention = StringMid($filename,$iPosition)
+	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $file_extention = ' & $file_extention & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	Local $i=1
 	while FileExists($temp)
 		$temp = $file_path_and_name &"("&$i&")"&$file_extention
+		ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $temp = ' & $temp & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
 		$i+=1
 	WEnd
 	Return $temp
