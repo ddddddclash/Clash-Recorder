@@ -22,34 +22,33 @@ EndFunc
 ;  Go_War_Stats - Goes to the war stats screen.
 ;============================================================
 
-Func Go_clan($hwind)
-	;WinActivate ($hwind)
-	ControlClick ($hwind, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
+Func goClan()
+
+	ControlClick ($BS_WIN, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
 	Sleep(500)
-	ControlClick ($hwind, "","", "left", "1", 289,54 ) ; blue 'i'
+	ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; blue 'i'
 	Sleep(500)
 EndFunc
 
 
-Func Go_War_Stats($hwind)
-	;WinActivate ($hwind)
-	ControlClick ($hwind, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
+Func goWarStats()
+	ControlClick ($BS_WIN, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
 	Sleep(1000)
-	ControlClick ($hwind, "","", "left", "1", 289,54 ) ; blue 'i'
+	ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; blue 'i'
 	Sleep(1000)
-	ControlClick ($hwind, "","", "left", "1", 94,309 ) ; war log
+	ControlClick ($BS_WIN, "","", "left", "1", 94,309 ) ; war log
 	Sleep(1000)
-	ControlClick ($hwind, "","", "left", "1", 779,107 ) ; Details
+	ControlClick ($BS_WIN, "","", "left", "1", 779,107 ) ; Details
 	Sleep(1000)
-	ControlClick ($hwind, "","", "left", "1", 332,347 ) ; Chat Arrow (in)
+	ControlClick ($BS_WIN, "","", "left", "1", 332,347 ) ; Chat Arrow (in)
 	Sleep(1000)
-	ControlClick ($hwind, "","", "left", "1", 436,584 ) ; View Map
+	ControlClick ($BS_WIN, "","", "left", "1", 436,584 ) ; View Map
 	Sleep(1000)
-	ControlClick ($hwind, "","", "left", "1", 682,43 ) ; blue star
+	ControlClick ($BS_WIN, "","", "left", "1", 682,43 ) ; blue star
 	Sleep(1000)
 EndFunc
 
-Func WinGetClientPos($hwind)
+Func WinGetClientPos($hwind = $BS_WIN)
 	local $aWin_Pos = WinGetPos($hwind)
 	Local $cSize = WinGetClientSize($hwind)
 	Local $padding = ($aWin_Pos[2] - $cSize[0]) /2
@@ -64,7 +63,13 @@ Func WinGetClientPos($hwind)
 	Return $cPos
 EndFunc
 
-
+Func updateBSWinPosition($hwind = $BS_WIN)
+	Local $p = WinGetPos($hwind)
+	$bs_x = $p[0]
+	$bs_y = $p[1]
+	$bs_width = $p[2]
+	$bs_height = $p[3]
+EndFunc
 
 ;============================================================
 ; Function Mark_Rect
@@ -79,6 +84,7 @@ Func Mark_Rect($hwind)
     Local $UserDLL = DllOpen("user32.dll")
 	Local $aLTRB[4]
 	Local $showTransparent = False
+	Local $iX1, $iX2, $iY1, $iY2
 
     ; Create transparent GUI with Cross cursor
 	$hCross_GUI = GUICreate("", $aWin_Pos[2], $aWin_Pos[3] ,$aWin_Pos[0] , $aWin_Pos[1] , $WS_POPUP, $WS_EX_TOPMOST)
@@ -173,10 +179,8 @@ Func Draw_Rectangle($hwind, $left,$top,$right,$bottom)
 	;WinSetOnTop($hTrans_GUI, "", 1)
 	GuiSetState()
 	_DrawRectEx($hTrans_GUI, $left, $top, $right, $bottom, 1, 0x000)
-	$success = _ScreenCapture_CaptureWnd(Unique_Filename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
-	If not $success Then
-		ConsoleWrite('>Error code: ' & @error & @CRLF)
-	EndIf
+	_ScreenCapture_CaptureWnd(Unique_Filename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
+
 	Destroy_Rectangle()
 EndFunc   ;==>Draw_Rectangle
 
@@ -212,9 +216,9 @@ EndFunc ;==> Make_Image
 Func Unique_Filename($filename)
 	Local $temp = $filename
 	Local $iPosition = StringInStr($filename, ".", 0, -1)
-	$file_path_and_name = StringMid($filename,1,$iPosition-1)
-	$file_extention = StringMid($filename,$iPosition)
-	$i=1
+	Local $file_path_and_name = StringMid($filename,1,$iPosition-1)
+	Local $file_extention = StringMid($filename,$iPosition)
+	Local $i=1
 	while FileExists($temp)
 		$temp = $file_path_and_name &"("&$i&")"&$file_extention
 		$i+=1
