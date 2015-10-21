@@ -25,9 +25,6 @@ EndFunc
 
 
 Func eventBtnClanSave()
-
-	ConsoleWrite("BUTTON PUSHED")
-
 	Local $hOpen = _WinHttpOpen()
 	Local $hConnect = _WinHttpConnect($hOpen, $BASE_URL)
 
