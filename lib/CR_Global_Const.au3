@@ -10,12 +10,7 @@ Global Const $GUI_HEIGHT = 593 ;360
 
 ; Paths
 Global Const $SCREENSHOT_PATH = @ScriptDir & "screenshots\"
-Global Const $IMG_PATH_CLAN = @ScriptDir & "\screenshots\clan.bmp"
-
-; URLs
-Global Const $BASE_URL = "http://localhost/"
-Global Const $PHP_CLAN = "coctrack/clantab.php"
-
+Global Const $IMG_PATH_CLAN = @ScriptDir & "\images\clan.bmp"
 
 ;Stuff for INI file
 Global Const $SHOW_CORDINATES = True

@@ -1,8 +1,8 @@
 #include "lib/WinHTTP/WinHttp.au3"
 
-Global $sFile = @ScriptDir & "\images\clan.bmp"
+Global $sFile = "C:\_Programming\Local - autoit\Clash Recorder\screenshots\4.jpg"
 
-Global Const $sURL = "http://localhost/"
+Global Const $sURL = "localhost"
 
 ; Session
 Global $hOpen = _WinHttpOpen()
@@ -13,6 +13,7 @@ If @error Then
     MsgBox(48, "Error", "Error getting connection handle." & @CRLF & "Error number is " & @error)
 Else
     ConsoleWrite("+ Connection handle $hConnect = " & $hConnect & @CRLF)
+    MsgBox(64, "Yes!", "Handle is get! $hConnect = " & $hConnect)
 EndIf
 
 ; Upload image

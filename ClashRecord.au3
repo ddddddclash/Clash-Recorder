@@ -26,9 +26,8 @@ Opt ("MouseCoordMode", 0)
 #include "lib/CR_Global_Const.au3"
 #include "lib/CR_Global.au3"
 #include "lib/CR_functions.au3"
-#include "lib/CR_GUI.au3"
 #include "lib/CR_Events.au3"
-#include "lib/WinHTTP/WinHttp.au3"  ; library for transfering HTTP data.
+#include "lib/CR_GUI.au3"
 
 
 HotKeySet ("{esc}", "Die")
