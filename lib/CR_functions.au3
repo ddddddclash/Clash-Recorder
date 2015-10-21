@@ -179,7 +179,7 @@ Func Draw_Rectangle($hwind, $left,$top,$right,$bottom)
 	;WinSetOnTop($hTrans_GUI, "", 1)
 	GuiSetState()
 	_DrawRectEx($hTrans_GUI, $left, $top, $right, $bottom, 1, 0x000)
-	_ScreenCapture_CaptureWnd(Unique_Filename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
+	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
 
 	Destroy_Rectangle()
 EndFunc   ;==>Draw_Rectangle
@@ -207,13 +207,13 @@ EndFunc   ;==Destroy_Rectangle
 
 Func Make_Image($hwind, $aLTRB)
 	$n+=1;
-	_ScreenCapture_CaptureWnd(Unique_Filename(@ScriptDir & "\capFile"&$n&".jpg"), $hwind, $aLTRB[0], $aLTRB[1], $aLTRB[2], $aLTRB[3],False)
+	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\capFile"&$n&".jpg"), $hwind, $aLTRB[0], $aLTRB[1], $aLTRB[2], $aLTRB[3],False)
 	;_ScreenCapture_Capture(@ScriptDir & "\capFile"&$n&".jpg", $aLTRB[0], $aLTRB[1], $aLTRB[2], $aLTRB[3], False)
 
 
 EndFunc ;==> Make_Image
 
-Func Unique_Filename($filename)
+Func uniqueFilename($filename)
 	Local $temp = $filename
 	Local $iPosition = StringInStr($filename, ".", 0, -1)
 	Local $file_path_and_name = StringMid($filename,1,$iPosition-1)
@@ -225,15 +225,3 @@ Func Unique_Filename($filename)
 	WEnd
 	Return $temp
 EndFunc
-#cs
-function unique_filename($filename){
-	$temp = $filename;
-	$tpi =  pathinfo($temp); //target file path info
-	$i = 1;
-	while (file_exists($temp)) {
-		$temp = $tpi['dirname'] .'/'. $tpi['filename'] . ' ('.$i.').'.$tpi['extension'];
-		$i++;
-	}
-	return $temp;
-}
-#ce

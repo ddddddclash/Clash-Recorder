@@ -1,10 +1,11 @@
+
 ;Menu Globals
 Global $idMenu_File, $idMenu_Save, $idMenu_Exit
 Global $idMenu_Testing, $idMenu_Draw_Rectangle
 Global $idMenu_Go, $idMenu_Clan, $idMenu_WarStats
 ;Clan Tab Items
 Global $Tabs, $TabSheet_Clan
-Global $btn_clan_snapshot, $pic_clan, $inp_clan_clan_name, $inp_clan_total_points , $inp_clan_wars_won, $inp_clan_num_members
+Global $btn_clan_snapshot, $btn_clan_save, $pic_clan, $inp_clan_clan_name, $inp_clan_total_points , $inp_clan_wars_won, $inp_clan_num_members
 Global $inp_clan_type, $inp_clan_required_trophies, $inp_clan_war_frequency, $inp_clan_clan_location, $inp_clan_clan_tag, $inp_clan_badge_level
 Global $inp_clan_clan_xp, $inp_clan_clan_xp_goal, $Label17
 
@@ -23,6 +24,10 @@ Func initGUI()
 
 EndFunc  ;==>InitGUI
 
+Func destroyGUI()
+
+	GUIDelete()
+EndFunc ;==>destroyGUI
 
 Func drawMenu()
 
@@ -47,10 +52,12 @@ Func drawClanTab()
 
 	$TabSheet_Clan = GUICtrlCreateTabItem("Clan")
 
-	$pic_clan = GUICtrlCreatePic($IMG_PATH_CLAN, 15, 104, 835, 198)
-	ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $pic_clan = ' & $pic_clan & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
+	$pic_clan = GUICtrlCreatePic($IMG_PATH_CLAN, 15, 104, 835, 198)  ;error when trying to show .png files.
+	;look at sample -ShowPNG in GUICtrlCreatePic
 	GUICtrlSetState(-1, $GUI_DISABLE) ;disables the image
 
+	$btn_clan_save = GUICtrlCreateButton("Save to Database", 640, 68, 101, 25)
+	GUICtrlSetOnEvent($btn_clan_save, "eventBtnClanSave")
 	$btn_clan_snapshot = GUICtrlCreateButton("Take Snapshot", 750, 68, 91, 25)
 	GUICtrlSetOnEvent($btn_clan_snapshot, "eventBtnClanSnapshot")
 
@@ -74,5 +81,4 @@ EndFunc  ;==>drawClanTab
 
 Func updateClanImage()
 	GUICtrlSetImage($pic_clan,$IMG_PATH_CLAN)
-
 EndFunc ;==>updateClanImage
