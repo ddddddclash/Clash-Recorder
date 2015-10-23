@@ -48,6 +48,11 @@ Func drawMenu()
 
 EndFunc ;==>drawMenu
 
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;	Clan Tab Functions
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Func drawClanTab()
 
 	$TabSheet_Clan = GUICtrlCreateTabItem("Clan")
@@ -82,3 +87,8 @@ EndFunc  ;==>drawClanTab
 Func updateClanImage()
 	GUICtrlSetImage($pic_clan,$IMG_PATH_CLAN)
 EndFunc ;==>updateClanImage
+
+
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+;	Clan Tab Functions
+;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
