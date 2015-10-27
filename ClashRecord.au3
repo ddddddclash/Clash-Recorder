@@ -16,7 +16,7 @@ Opt("MustDeclareVars",1)
 Opt("GUIOnEventMode",1)
 Opt ("MouseClickDelay", 10)
 Opt ("MouseClickDownDelay", 10)
-Opt ("MouseCoordMode", 0)
+;Opt ("MouseCoordMode", 0)
 
 ; AutoIt Includes
 ;#include <Date.au3>
@@ -26,8 +26,10 @@ Opt ("MouseCoordMode", 0)
 #include "lib/CR_Global_Const.au3"
 #include "lib/CR_Global.au3"
 #include "lib/CR_functions.au3"
+#include "lib/CR_go.au3"
 #include "lib/CR_GUI.au3"
 #include "lib/CR_Events.au3"
+#include "lib/mouse.au3" ; mouse movements by codeslinger69
 #include "lib/WinHTTP/WinHttp.au3"  ; library for transfering HTTP data.
 
 
@@ -38,7 +40,7 @@ main()
 Func main()
 
 	WinActivate ($BS_WIN)
-	updateBSWinPosition()
+	;updateBSWinPosition()
 
 	initGUI()
 

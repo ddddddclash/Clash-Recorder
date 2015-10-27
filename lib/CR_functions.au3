@@ -13,39 +13,8 @@ Func Die()
    Exit
 EndFunc
 
-
-;============================================================
-; Function Group
-;  Go_... moves the mouse and clicks inside of Clash of clans
-;
-;  Go_clan - Goes to the clan roster screen.
-;  Go_War_Stats - Goes to the war stats screen.
-;============================================================
-
-Func goClan()
-
-	ControlClick ($BS_WIN, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
-	Sleep(500)
-	ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; blue 'i'
-	Sleep(500)
-EndFunc
-
-
-Func goWarStats()
-	ControlClick ($BS_WIN, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; blue 'i'
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 94,309 ) ; war log
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 779,107 ) ; Details
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 332,347 ) ; Chat Arrow (in)
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 436,584 ) ; View Map
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 682,43 ) ; blue star
-	Sleep(1000)
+Func GetClientPos()
+	return WinGetClientPos()
 EndFunc
 
 Func WinGetClientPos($hwind = $BS_WIN)
@@ -63,13 +32,13 @@ Func WinGetClientPos($hwind = $BS_WIN)
 	Return $cPos
 EndFunc
 
-Func updateBSWinPosition($hwind = $BS_WIN)
-	Local $p = WinGetPos($hwind)
-	$bs_x = $p[0]
-	$bs_y = $p[1]
-	$bs_width = $p[2]
-	$bs_height = $p[3]
-EndFunc
+;Func updateBSWinPosition($hwind = $BS_WIN)
+;	Local $p = WinGetPos($hwind)
+;	$bs_x = $p[0]
+;	$bs_y = $p[1]
+;	$bs_width = $p[2]
+;	$bs_height = $p[3]
+;EndFunc
 
 ;============================================================
 ; Function Mark_Rect

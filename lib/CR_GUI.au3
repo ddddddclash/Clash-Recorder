@@ -8,16 +8,22 @@ Global $Tabs, $TabSheet_Clan
 Global $btn_clan_snapshot, $btn_clan_save, $pic_clan, $inp_clan_clan_name, $inp_clan_total_points , $inp_clan_wars_won, $inp_clan_num_members
 Global $inp_clan_type, $inp_clan_required_trophies, $inp_clan_war_frequency, $inp_clan_clan_location, $inp_clan_clan_tag, $inp_clan_badge_level
 Global $inp_clan_clan_xp, $inp_clan_clan_xp_goal, $Label17
+;Profile Tab Items
+Global $TabSheet_Profile
+Global $btn_profile_goProfile, $btn_profile_snapshot, $btn_profile_save
 
 Func initGUI()
-	$GUI = GUICreate("Clash Recorder", $GUI_WIDTH, $GUI_HEIGHT, $bs_x + $bs_width + 8, $bs_y + ($bs_height/2) - ($GUI_HEIGHT / 2))
+	Local $p = WinGetPos($BS_WIN)
+	$GUI = GUICreate("Clash Recorder", $p[2], $p[3], $p[0] + $p[2] + 8, $p[1] + ($p[3]/2) - ($GUI_HEIGHT / 2))
+	;$GUI = GUICreate("Clash Recorder", $GUI_WIDTH, $GUI_HEIGHT, $bs_x + $bs_width + 8, $bs_y + ($bs_height/2) - ($GUI_HEIGHT / 2))
 	GUISetOnEvent($GUI_EVENT_CLOSE, "eventMenuExit")
-	GUISetOnEvent($GUI_EVENT_DROPPED, "updateBSWinPosition")
+	;GUISetOnEvent($GUI_EVENT_DROPPED, "updateBSWinPosition")
 
 	drawMenu()
 	$Tabs = GUICtrlCreateTab(10, 32, 857, 505)
 
 	drawClanTab()
+	drawProfileTab()
 
 	GUICtrlCreateTabItem("")
 	GUISetState(@SW_SHOW)
@@ -90,5 +96,18 @@ EndFunc ;==>updateClanImage
 
 
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-;	Clan Tab Functions
+;	Profile Tab Functions
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Func drawProfileTab()
+
+	$TabSheet_Profile = GUICtrlCreateTabItem("Profile")
+	$btn_profile_goProfile = GUICtrlCreateButton("Next Profile", 540, 68, 91, 25)
+	GUICtrlSetOnEvent($btn_profile_goProfile, "eventBtnProfileGo")
+	$btn_profile_snapshot = GUICtrlCreateButton("Take Snapshot", 640, 68, 91, 25)
+	GUICtrlSetOnEvent($btn_profile_snapshot, "eventBtnProfileSnapshot")
+	$btn_profile_save = GUICtrlCreateButton("Save to Database", 740, 68, 101, 25)
+	GUICtrlSetOnEvent($btn_profile_save, "eventBtnProfileSave")
+
+EndFunc ;==>drawProfileTab
+
