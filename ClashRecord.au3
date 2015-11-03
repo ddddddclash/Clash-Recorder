@@ -26,6 +26,7 @@ Opt ("MouseClickDownDelay", 10)
 #include "lib/CR_Global_Const.au3"
 #include "lib/CR_Global.au3"
 #include "lib/CR_functions.au3"
+#include "lib/CR_convert_cordinates.au3"
 #include "lib/CR_go.au3"
 #include "lib/CR_GUI.au3"
 #include "lib/CR_Events.au3"
@@ -34,6 +35,7 @@ Opt ("MouseClickDownDelay", 10)
 
 
 HotKeySet ("{esc}", "Die")
+HotKeySet (">", "eventBtnProfileGo")
 
 main()
 

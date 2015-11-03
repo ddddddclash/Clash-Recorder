@@ -10,7 +10,7 @@ Global $inp_clan_type, $inp_clan_required_trophies, $inp_clan_war_frequency, $in
 Global $inp_clan_clan_xp, $inp_clan_clan_xp_goal, $Label17
 ;Profile Tab Items
 Global $TabSheet_Profile
-Global $btn_profile_goProfile, $btn_profile_snapshot, $btn_profile_save
+Global $btn_profile_goProfile, $btn_profile_snapshot, $btn_profile_save, $btn_profile_reset
 
 Func initGUI()
 	Local $p = WinGetPos($BS_WIN)
@@ -102,6 +102,8 @@ EndFunc ;==>updateClanImage
 Func drawProfileTab()
 
 	$TabSheet_Profile = GUICtrlCreateTabItem("Profile")
+	$btn_profile_reset = GUICtrlCreateButton("Reset", 440, 68, 91, 25)
+	GUICtrlSetOnEvent($btn_profile_reset, "eventBtnProfileReset")
 	$btn_profile_goProfile = GUICtrlCreateButton("Next Profile", 540, 68, 91, 25)
 	GUICtrlSetOnEvent($btn_profile_goProfile, "eventBtnProfileGo")
 	$btn_profile_snapshot = GUICtrlCreateButton("Take Snapshot", 640, 68, 91, 25)

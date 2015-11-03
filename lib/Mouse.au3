@@ -35,10 +35,10 @@ Func _ControlClick(Const $x, Const $y, Const $numClicks = 1, Const $delay = 0)
    Next
 EndFunc
 
-Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY)
+Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY, $hwind = $BS_WIN)
    If $gMouseClickMethod = "MouseClick" Then
 	  Local $cPos = GetClientPos()
-	  ConsoleWrite("[0] = "&$cPos[0]&"[1] = "&$cPos[1]&"[2] = "&$cPos[2]&"[3] = "&$cPos[3])
+	  ;ConsoleWrite("[0] = "&$cPos[0]&"[1] = "&$cPos[1]&"[2] = "&$cPos[2]&"[3] = "&$cPos[3])
 	  Local $speed = Random(5, 25, 1)
 	  MouseClickDrag("left", $cPos[0]+$startX, $cPos[1]+$startY, $cPos[0]+$endX, $cPos[1]+$endY, $speed)
    Else
@@ -46,6 +46,24 @@ Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY)
 	  Local $WM_LBUTTONDOWN  = 0x0201
 	  Local $WM_LBUTTONUP  = 0x0202
 
+;   Modified 11/02/2015 By dddddd.clash
+
+	  Local $start = ConvertCordinates($startX,$startY,$__CLIENT,$__WINDOW) ;[$startX,$startY]
+	  Local $end = ConvertCordinates($endX,$endY,$__CLIENT,$__WINDOW) ;[$endX,$endY]
+     ConsoleWrite("ControlClickDrag: Original: " & Hex($hwind) & " " & $startX& " " & $startY & " " & $endX & " " & $endY &@CRLF)
+	 ConsoleWrite("ControlClickDrag: handle: " & Hex($hwind) & " " & $start[0] & " " & $start[1] & " " & $end[0] & " " & $end[1])
+
+	  DllCall("user32.dll", "int", "SendMessage", "hwnd", $hwind, "int", $WM_LBUTTONDOWN, "int", $MK_LBUTTON, "long", _MakeLong($start[0], $start[1]))
+	  Sleep(250)
+	  DllCall("user32.dll", "int", "SendMessage", "hwnd", $hwind, "int", $WM_MOUSEMOVE, "int", 0, "long", _MakeLong($end[0], $end[1]))
+	  Sleep(250)
+	  DllCall("user32.dll", "int", "SendMessage", "hwnd", $hwind, "int", $WM_LBUTTONUP, "int", $MK_LBUTTON, "long", _MakeLong($end[0], $end[1]))
+
+
+
+#cs
+	  ;Old
+	  ;
 	  Local $wHandle = ControlGetHandle($BS_TITLE, "", "")
 	  ConsoleWrite("ControlClickDrag: handle: " & Hex($wHandle) & " " & $startX & " " & $startY & " " & $endX & " " & $endY)
 
@@ -54,6 +72,8 @@ Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY)
 	  DllCall("user32.dll", "int", "SendMessage", "hwnd", $wHandle, "int", $WM_MOUSEMOVE, "int", 0, "long", _MakeLong($endX, $endY))
 	  Sleep(250)
 	  DllCall("user32.dll", "int", "SendMessage", "hwnd", $wHandle, "int", $WM_LBUTTONUP, "int", $MK_LBUTTON, "long", _MakeLong($endX, $endY))
+#ce
+
    EndIf
 EndFunc
 

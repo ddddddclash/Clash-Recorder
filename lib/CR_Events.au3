@@ -63,6 +63,10 @@ Func eventBtnClanSave()
 
 EndFunc ;==> eventBtnClanSave
 
+Func eventBtnProfileReset()
+	$profile_n = 0
+EndFunc
+
 Func eventBtnProfileSnapshot()
 	;WinActivate ($BS_WIN)
 	;Local $p = WinGetPos($BS_WIN)

@@ -42,6 +42,7 @@ EndFunc
 
 ;============================================================
 ; Function Mark_Rect
+; Author: Unknown
 ; Draws a black rectangle and gets the left, top, bottom and right cordinates.
 ; Returns an array of 4 cordinages. [x1,y1,x2,y2]
 ;============================================================
@@ -138,8 +139,12 @@ Func Mark_Rect($hwind)
 
 EndFunc   ;==>Mark_Rect
 
-
-Func Draw_Rectangle($hwind, $left,$top,$right,$bottom)
+;============================================================
+; Function Draw_Rectangle
+; Author: dddddd.clash
+; Function:
+;============================================================
+Func Draw_Rectangle($hwind, $left,$top,$right,$bottom,$fName = "clan.jpg")
 	local $aWin_Pos = WinGetPos($hwind)
 	Global $hTrans_GUI = GUICreate("Test", $aWin_Pos[2], $aWin_Pos[3] ,$aWin_Pos[0] , $aWin_Pos[1] , $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT,$WS_EX_TOPMOST))
 	Global $hDC, $hPen, $hWnd ; Needded to Dispose later
@@ -148,11 +153,16 @@ Func Draw_Rectangle($hwind, $left,$top,$right,$bottom)
 	;WinSetOnTop($hTrans_GUI, "", 1)
 	GuiSetState()
 	_DrawRectEx($hTrans_GUI, $left, $top, $right, $bottom, 1, 0x000)
-	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\screenshots\clan.jpg"), $hTrans_GUI, $left, $top, $right, $bottom,False)
+	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\screenshots\$fName"), $hTrans_GUI, $left, $top, $right, $bottom,False)
 
 	Destroy_Rectangle()
 EndFunc   ;==>Draw_Rectangle
 
+;============================================================
+; Function Draw_Rectangle
+; My function that calls Draw Rectangle and saves the image as a unique file name
+; Returns an array of 4 cordinates. [x1,y1,x2,y2]
+;============================================================
 Func _DrawRectEx($hGUI, $LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth, $RectColour)
     Local $obj_orig
     $hWnd = $hGUI
@@ -194,3 +204,9 @@ Func uniqueFilename($filename)
 	WEnd
 	Return $temp
 EndFunc
+
+
+
+
+
+

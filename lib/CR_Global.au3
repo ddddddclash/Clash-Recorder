@@ -7,7 +7,7 @@ Global $profile_n = 0 ;profile screen index
 ;Global $bs_x, $bs_y, $bs_width, $bs_height
 
 ;Mouse Variables
-Global $gMouseClickMethod = "" ;"MouseClick"
+Global $gMouseClickMethod = "MouseClick" ;""
 
 ;GUI Variables
 Global $GUI
