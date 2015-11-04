@@ -153,7 +153,7 @@ Func Draw_Rectangle($hwind, $left,$top,$right,$bottom,$fName = "clan.jpg")
 	;WinSetOnTop($hTrans_GUI, "", 1)
 	GuiSetState()
 	_DrawRectEx($hTrans_GUI, $left, $top, $right, $bottom, 1, 0x000)
-	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\screenshots\$fName"), $hTrans_GUI, $left, $top, $right, $bottom,False)
+	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\screenshots\"&$fName), $hTrans_GUI, $left, $top, $right, $bottom,False)
 
 	Destroy_Rectangle()
 EndFunc   ;==>Draw_Rectangle
@@ -205,6 +205,16 @@ Func uniqueFilename($filename)
 	Return $temp
 EndFunc
 
+
+Func DebugWrite($text)
+   If $DEBUG_MODE Then
+	  ConsoleWrite(_NowDate() & " " & _NowTime() & " " & $text & @CRLF)
+   EndIf
+   If $LOG_DEBUG Then
+	   FileWrite("CR_Log.txt", _NowDate() & " " & _NowTime() & " " & $text & @CRLF)
+	EndIf
+
+EndFunc
 
 
 

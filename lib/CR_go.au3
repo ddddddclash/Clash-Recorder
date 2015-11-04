@@ -15,13 +15,31 @@ Func goClan()
 EndFunc
 
 
+Func goWarStats()
+	ControlClick ($BS_WIN, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
+	Sleep(1000)
+	ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; blue 'i'
+	Sleep(1000)
+	ControlClick ($BS_WIN, "","", "left", "1", 94,309 ) ; war log
+	Sleep(1000)
+	ControlClick ($BS_WIN, "","", "left", "1", 779,107 ) ; Details
+	Sleep(1000)
+	ControlClick ($BS_WIN, "","", "left", "1", 332,347 ) ; Chat Arrow (in)
+	Sleep(1000)
+	ControlClick ($BS_WIN, "","", "left", "1", 436,584 ) ; View Map
+	Sleep(1000)
+	ControlClick ($BS_WIN, "","", "left", "1", 682,43 ) ; blue star
+	Sleep(1000)
+EndFunc
+
+
 Func goProfile()
 	Local $i  = 0
 	Local $btnMenu[2]
 	Local $btnProf[2]
 	Local $btnReturn[2] = [45,45]
 	if $profile_n = 0 Then
-
+		;_ScreenCapture_Capture($IMG_PATH_CLAN, $p[0] + $cords_clan_ss[0], $p[1] +  $cords_clan_ss[1], $p[0] + $cords_clan_ss[2], $p[1] + $cords_clan_ss[3],False)
 		_ClickDrag(354,364,321,120)	;Select profile 1 and move to top.
 		;Detect position if not at top of screen then less than 10 players
 		;when at position 1 it doesn't move
@@ -80,21 +98,4 @@ Func goExitProfile()
 	; Global profile_n = 0;
 	;ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; Green Back Arrow
 	;Sleep(500)
-EndFunc
-
-Func goWarStats()
-	ControlClick ($BS_WIN, "","", "left", "1", 18,348 ) ; Chat Arrow (out)
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 289,54 ) ; blue 'i'
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 94,309 ) ; war log
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 779,107 ) ; Details
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 332,347 ) ; Chat Arrow (in)
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 436,584 ) ; View Map
-	Sleep(1000)
-	ControlClick ($BS_WIN, "","", "left", "1", 682,43 ) ; blue star
-	Sleep(1000)
 EndFunc

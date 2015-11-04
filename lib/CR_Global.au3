@@ -7,10 +7,11 @@ Global $profile_n = 0 ;profile screen index
 ;Global $bs_x, $bs_y, $bs_width, $bs_height
 
 ;Mouse Variables
-Global $gMouseClickMethod = "MouseClick" ;""
+Global $gMouseClickMethod = "MouseClick" ; ""
 
 ;GUI Variables
 Global $GUI
 
 ;ss - Screen Shot
-Global $cords_clan_ss[4] = [16,109,851,307]
+Global $cords_clan_ss[4] = [16,109,851,307]	; Cordinates relative to window.
+Global $cords_clan_1_pos1 = [38,380,55,401]

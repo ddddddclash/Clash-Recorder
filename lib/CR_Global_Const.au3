@@ -19,4 +19,5 @@ Global Const $PHP_CLAN = "coctrack/clantab.php"
 
 ;Stuff for INI file
 Global Const $SHOW_CORDINATES = True
-
+Global Const $DEBUG_MODE = True
+Global Const $LOG_DEBUG = False

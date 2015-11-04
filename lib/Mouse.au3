@@ -40,6 +40,7 @@ Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY, $hwind =
 	  Local $cPos = GetClientPos()
 	  ;ConsoleWrite("[0] = "&$cPos[0]&"[1] = "&$cPos[1]&"[2] = "&$cPos[2]&"[3] = "&$cPos[3])
 	  Local $speed = Random(5, 25, 1)
+	  ;MouseClickDrag("left", $cPos[0]+$startX, $cPos[1]+$startY, $cPos[0]+$endX, $cPos[1]+$endY, $speed)
 	  MouseClickDrag("left", $cPos[0]+$startX, $cPos[1]+$startY, $cPos[0]+$endX, $cPos[1]+$endY, $speed)
    Else
 	  Local $MK_LBUTTON  = 0x0001

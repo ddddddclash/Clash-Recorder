@@ -16,10 +16,10 @@ Opt("MustDeclareVars",1)
 Opt("GUIOnEventMode",1)
 Opt ("MouseClickDelay", 10)
 Opt ("MouseClickDownDelay", 10)
-;Opt ("MouseCoordMode", 0)
+;Opt ("MouseCoordMode", 1)
 
 ; AutoIt Includes
-;#include <Date.au3>
+#include <Date.au3> ;used for date on debug info
 
 
 ; CR Includes
