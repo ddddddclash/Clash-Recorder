@@ -15,6 +15,11 @@ Func eventMenuDrawRectangle()
 	EndIf
 EndFunc ;==>eventMenuDrawRectangle
 
+Func eventMenuMouseHome()
+	WinActivate ($BS_WIN)
+	MouseMove(0,0)
+EndFunc
+
 Func eventBtnClanSnapshot()
 	WinActivate ($BS_WIN)
 	Local $p = WinGetPos($BS_WIN)

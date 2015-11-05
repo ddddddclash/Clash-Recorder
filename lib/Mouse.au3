@@ -36,12 +36,23 @@ Func _ControlClick(Const $x, Const $y, Const $numClicks = 1, Const $delay = 0)
 EndFunc
 
 Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY, $hwind = $BS_WIN)
+	; His method worked with mousemode 1. screen cordinates compensated for clent position
+	; the cordinates passed in are client console mode
+	; and the rectangles and other cordinates are in window mode.
+   Local $start = ConvertCordinates($startX,$startY,$__CLIENT,$__WINDOW) ;[$startX,$startY]
+   Local $end = ConvertCordinates($endX,$endY,$__CLIENT,$__WINDOW) ;[$endX,$endY]
+
+   ConsoleWrite("O Start: "&$startX&", "&$startY&" End: "&$endX&", "&$endY&@CRLF)
+   ConsoleWrite("C Start: "&$start[0]&", "&$start[1]&" End: "&$end[0]&", "&$end[1]&@CRLF)
+
    If $gMouseClickMethod = "MouseClick" Then
-	  Local $cPos = GetClientPos()
+	  ;Local $cPos = GetClientPos()
 	  ;ConsoleWrite("[0] = "&$cPos[0]&"[1] = "&$cPos[1]&"[2] = "&$cPos[2]&"[3] = "&$cPos[3])
-	  Local $speed = Random(5, 25, 1)
+	  Local $speed = 5; Random(5, 25, 1)
+	  WinActivate ($BS_WIN)
 	  ;MouseClickDrag("left", $cPos[0]+$startX, $cPos[1]+$startY, $cPos[0]+$endX, $cPos[1]+$endY, $speed)
-	  MouseClickDrag("left", $cPos[0]+$startX, $cPos[1]+$startY, $cPos[0]+$endX, $cPos[1]+$endY, $speed)
+	  ;MouseClickDrag("left", $startX, $startY, $endX, $endY, $speed)
+	  MouseClickDrag("left", $start[0], $start[1] , $end[0], $end[1], $speed)
    Else
 	  Local $MK_LBUTTON  = 0x0001
 	  Local $WM_LBUTTONDOWN  = 0x0201
@@ -49,8 +60,8 @@ Func _ClickDrag(Const $startX, Const $startY, Const $endX, Const $endY, $hwind =
 
 ;   Modified 11/02/2015 By dddddd.clash
 
-	  Local $start = ConvertCordinates($startX,$startY,$__CLIENT,$__WINDOW) ;[$startX,$startY]
-	  Local $end = ConvertCordinates($endX,$endY,$__CLIENT,$__WINDOW) ;[$endX,$endY]
+	 ;Local $start = ConvertCordinates($startX,$startY,$__CLIENT,$__WINDOW) ;[$startX,$startY]
+	 ;Local $end = ConvertCordinates($endX,$endY,$__CLIENT,$__WINDOW) ;[$endX,$endY]
      ConsoleWrite("ControlClickDrag: Original: " & Hex($hwind) & " " & $startX& " " & $startY & " " & $endX & " " & $endY &@CRLF)
 	 ConsoleWrite("ControlClickDrag: handle: " & Hex($hwind) & " " & $start[0] & " " & $start[1] & " " & $end[0] & " " & $end[1])
 

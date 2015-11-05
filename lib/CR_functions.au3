@@ -18,6 +18,7 @@ Func GetClientPos()
 EndFunc
 
 Func WinGetClientPos($hwind = $BS_WIN)
+	WinActivate ($BS_WIN)
 	local $aWin_Pos = WinGetPos($hwind)
 	Local $cSize = WinGetClientSize($hwind)
 	Local $padding = ($aWin_Pos[2] - $cSize[0]) /2

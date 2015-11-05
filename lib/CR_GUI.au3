@@ -1,7 +1,7 @@
 
 ;Menu Globals
 Global $idMenu_File, $idMenu_Save, $idMenu_Exit
-Global $idMenu_Testing, $idMenu_Draw_Rectangle
+Global $idMenu_Testing, $idMenu_Draw_Rectangle, $idMenu_Mouse_Home
 Global $idMenu_Go, $idMenu_Clan, $idMenu_WarStats
 ;Clan Tab Items
 Global $Tabs, $TabSheet_Clan
@@ -14,16 +14,15 @@ Global $btn_profile_goProfile, $btn_profile_snapshot, $btn_profile_save, $btn_pr
 
 Func initGUI()
 	Local $p = WinGetPos($BS_WIN)
-	$GUI = GUICreate("Clash Recorder", $p[2], $p[3], $p[0] + $p[2] + 8, $p[1] + ($p[3]/2) - ($GUI_HEIGHT / 2))
-	;$GUI = GUICreate("Clash Recorder", $GUI_WIDTH, $GUI_HEIGHT, $bs_x + $bs_width + 8, $bs_y + ($bs_height/2) - ($GUI_HEIGHT / 2))
+	$GUI = GUICreate("Clash Recorder",$GUI_WIDTH, $GUI_HEIGHT, $p[0] + $p[2] + 8, $p[1] + ($p[3]/2) - ($GUI_HEIGHT / 2))
 	GUISetOnEvent($GUI_EVENT_CLOSE, "eventMenuExit")
-	;GUISetOnEvent($GUI_EVENT_DROPPED, "updateBSWinPosition")
 
 	drawMenu()
+
 	$Tabs = GUICtrlCreateTab(10, 32, 857, 505)
 
-	drawClanTab()
-	drawProfileTab()
+	DrawClanTab()
+	DrawProfileTab()
 
 	GUICtrlCreateTabItem("")
 	GUISetState(@SW_SHOW)
@@ -31,7 +30,6 @@ Func initGUI()
 EndFunc  ;==>InitGUI
 
 Func destroyGUI()
-
 	GUIDelete()
 EndFunc ;==>destroyGUI
 
@@ -45,6 +43,8 @@ Func drawMenu()
 	$idMenu_Testing = GUICtrlCreateMenu("Testing")
 	$idMenu_Draw_Rectangle = GUICtrlCreateMenuItem('Draw Rectangle', $idMenu_Testing)
 	GUICtrlSetOnEvent($idMenu_Draw_Rectangle, "eventMenuDrawRectangle")
+	$idMenu_Mouse_Home = GUICtrlCreateMenuItem('Mouse Home', $idMenu_Testing)
+	GUICtrlSetOnEvent($idMenu_Mouse_Home, "eventMenuMouseHome")
 	$idMenu_Go = GUICtrlCreateMenu("Go")
 	$idMenu_Clan = GUICtrlCreateMenuItem('Clan', $idMenu_Go)
 	GUICtrlSetOnEvent($idMenu_Clan, "goClan")
@@ -99,7 +99,7 @@ EndFunc ;==>updateClanImage
 ;	Profile Tab Functions
 ;~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Func drawProfileTab()
+Func DrawProfileTab()
 
 	$TabSheet_Profile = GUICtrlCreateTabItem("Profile")
 	$btn_profile_reset = GUICtrlCreateButton("Reset", 440, 68, 91, 25)
@@ -111,5 +111,5 @@ Func drawProfileTab()
 	$btn_profile_save = GUICtrlCreateButton("Save to Database", 740, 68, 101, 25)
 	GUICtrlSetOnEvent($btn_profile_save, "eventBtnProfileSave")
 
-EndFunc ;==>drawProfileTab
+EndFunc ;==>DrawProfileTab
 
