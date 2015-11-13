@@ -1,0 +1,11 @@
+Write function 
+
+Temp files are the timestamp or specific names when used as a replaceable image file.
+if the file exists then erase if first
+
+Func initTempDir($tempdirname = $gsTEMP_DIR_NAME)
+	If not exists folder('temp')
+		create folder
+	if not exists file _readme.text
+		create file_readme.text
+		Add text "This folder contains temporary items. The folder may be deleted and it will be created again."
