@@ -18,3 +18,4 @@ Global $gTitle = $BS_TITLE
 #include "lib/CodeSlinger69/Screen.au3"
 #include "lib/CodeSlinger69/TownHall.au3"
 
+;Simple change
