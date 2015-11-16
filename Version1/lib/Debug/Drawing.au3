@@ -17,9 +17,10 @@ Global $debugGUI = 0
 
 
 ; _DrawGui() has been replaced by _DebugCreateCanvas
-
-Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0)
-	$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
+Func DebugCreateCanvas()
+;Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0)
+	;$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
+	$debugGUI = GuiCreate("",@DesktopWidth,@DesktopHeight,0, 0,$WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
 	GuiSetBkColor(0x123456)
 	_WinAPI_SetLayeredWindowAttributes($debugGUI,0x123456,255,0x01)
 	WinSetOnTop($debugGUI, "", 1)

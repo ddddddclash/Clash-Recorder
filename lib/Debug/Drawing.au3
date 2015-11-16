@@ -18,19 +18,21 @@ Global $debugGUI = 0
 
 ; _DrawGui() has been replaced by _DebugCreateCanvas
 
-Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0)
+;Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0)
+Func DebugCreateCanvas()
 	If Not $gc_DEBUG_CANVAS Then Return
-	$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
+	;$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
+	$debugGUI = GuiCreate("",@DesktopWidth,@DesktopHeight,0, 0,$WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
 	GuiSetBkColor(0x123456)
 	_WinAPI_SetLayeredWindowAttributes($debugGUI,0x123456,255,0x01)
 	WinSetOnTop($debugGUI, "", 1)
 	GuiSetState()
 EndFunc
 
-
+#cs
 Func DebugDrawLabel($text, $x, $y, $width, $height)
-	If Not $gc_DEBUG_CANVAS Then Return
-	GuiSetState(@SW_SHOW,$debugGUI)
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
+	;GuiSetState(@SW_SHOW,$debugGUI)
 	;GUICtrlCreateLabel("Width:", $x+20, $y-4, 35, 17)
 
 	Local $hDC = _WinAPI_GetWindowDC($debugGUI)
@@ -45,18 +47,26 @@ Func DebugDrawLabel($text, $x, $y, $width, $height)
 	_WinAPI_ReleaseDC($debugGUI, $hDC)
 
 EndFunc
+#ce
 
 Func DebugDrawPointLabel($x,$y,$text)
-	If Not $gc_DEBUG_CANVAS Then Return
-	GuiSetState(@SW_SHOW,$debugGUI)
+ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(54) :    	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return'  & @CRLF) ;### Trace Console
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
+ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(56) :    	GUISwitch($debugGUI)'  & @CRLF) ;### Trace Console
+	GUISwitch($debugGUI)
 	GUICtrlCreateLabel($text, $x+10, $y)
+ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(59) :    	GUICtrlSetBkColor(-1, 0xffffff)'  & @CRLF) ;### Trace Console
 	GUICtrlSetBkColor(-1, 0xffffff)
+ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(61) :    	DebugDrawPoint($x,$y)'  & @CRLF) ;### Trace Console
 	DebugDrawPoint($x,$y)
 EndFunc
 
+Func DebugToFront()
+	WinActivate ($debugGUI)
+EndFunc
 
 Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth = 1, $RectColour = 0x000)
-	If Not $gc_DEBUG_CANVAS Then Return
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
     Local $hDC = _WinAPI_GetWindowDC($debugGUI)
     Local $hPen = _WinAPI_CreatePen($PS_SOLID, $RectWidth, $RectColour)
     Local $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
@@ -72,7 +82,7 @@ Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectW
 EndFunc   ;==>DebugDrawRectangle
 
 Func DebugDrawPoint($x, $y, $colour = 0x000) ; Cross hairs
-	If Not $gc_DEBUG_CANVAS Then Return
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
     Local $hDC = _WinAPI_GetWindowDC($debugGUI)
     Local $hPen = _WinAPI_CreatePen($PS_SOLID, 1, $colour)
     Local $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
@@ -88,7 +98,7 @@ Func DebugDrawPoint($x, $y, $colour = 0x000) ; Cross hairs
 EndFunc   ;==>DebugDrawPoint
 
 Func DebugDrawArrow($x, $y, $colour =0x000) ; arrow head pointing to cordinates.
-	If Not $gc_DEBUG_CANVAS Then Return
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
     Local $hDC = _WinAPI_GetWindowDC($debugGUI)
     Local $hPen = _WinAPI_CreatePen($PS_SOLID, 1, $colour)
     Local $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
@@ -104,7 +114,8 @@ EndFunc   ;==>DebugDrawArrow
 
 
 Func DebugDestroyCanvas()
-	If Not $gc_DEBUG_CANVAS Then Return
+	If $debugGUI = 0 Then Return
 	GUIDelete($debugGUI)
+	$debugGUI = 0
 EndFunc ;==>DebugDestroyCanvas
 

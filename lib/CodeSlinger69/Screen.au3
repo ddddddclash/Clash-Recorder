@@ -88,18 +88,20 @@ Func WhereAmI()
    Local $bestMatch, $bestConfidence, $bestX, $bestY
    Local $cPos = GetClientPos()
 
+#cs
    ;GrabFrameToFile("HomeScanFrame.bmp")
    ScanFrameForBestBMP("HomeScanFrame.bmp", $CoCIconBMPs, 0.95, $bestMatch, $bestConfidence, $bestX, $bestY)
    ;DebugWrite("Android Home Scan: " & $bestMatch & " " & $bestConfidence & " " & $bestX & " " & $bestY)
    If $bestMatch <> -1 Then
 	  Return $eScreenAndroidHome
-   EndIf
+EndIf
+#ce
 
    ; $ScreenMain
    If IsColorPresent($rScreenMainColor) Then Return $eScreenMain
-   ;DebugDrawPointLabel($cPos[0]+$rScreenMainColor[0],$cPos[1]+$rScreenMainColor[1],"ScreenMainColor")
-   DebugDrawPoint($cPos[0]+$rScreenMainColor[0], $cPos[1]+$rScreenMainColor[1])
-   DebugDrawLabel("ScreenMainColor",$cPos[0]+$rScreenMainColor[0]+20, $cPos[1]+$rScreenMainColor[1]-4, 150,17)
+   DebugDrawPointLabel($cPos[0]+$rScreenMainColor[0],$cPos[1]+$rScreenMainColor[1],"ScreenMainColor")
+   ;DebugDrawPoint($cPos[0]+$rScreenMainColor[0], $cPos[1]+$rScreenMainColor[1])
+   ;DebugDrawLabel("ScreenMainColor",$cPos[0]+$rScreenMainColor[0]+20, $cPos[1]+$rScreenMainColor[1]-4, 150,17)
 
    ; $ScreenChatOpen
    If IsButtonPresent($rMainScreenOpenChatButton) Then Return $eScreenChatOpen
