@@ -33,7 +33,6 @@ Func InitLogDir()
 	Local $logDir = $gc_LOG_DIR
     If StringInStr($gc_LOG_DIR,":") = 0 Then
 		$logDir = @ScriptDir&"\"&$gc_LOG_DIR
-		ConsoleWrite('@@ Debug(' & @ScriptLineNumber & ') : $logDir = ' & $logDir & @CRLF & '>Error code: ' & @error & @CRLF) ;### Debug Console
 	EndIf
 	If DirGetSize($logDir) = -1 Then
 		DirCreate($logDir)

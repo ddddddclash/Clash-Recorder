@@ -46,7 +46,13 @@ Func DebugDrawLabel($text, $x, $y, $width, $height)
 
 EndFunc
 
-
+Func DebugDrawPointLabel($x,$y,$text)
+	If Not $gc_DEBUG_CANVAS Then Return
+	GuiSetState(@SW_SHOW,$debugGUI)
+	GUICtrlCreateLabel($text, $x+10, $y)
+	GUICtrlSetBkColor(-1, 0xffffff)
+	DebugDrawPoint($x,$y)
+EndFunc
 
 
 Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth = 1, $RectColour = 0x000)
