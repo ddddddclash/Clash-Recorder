@@ -1,4 +1,6 @@
 #include <ScreenCapture.au3>
+#include <GDIPlus.au3>
+
 #include "CharMaps.au3"
 #include "RegionDefs.au3"
 
@@ -466,21 +468,19 @@ EndFunc
 Func IsTextBoxPresent(Const ByRef $textBox)
    Local $cPos = GetClientPos()
    Local $pixelColor = PixelGetColor($cPos[0]+$textBox[6], $cPos[1]+$textBox[7])
-
    Return InColorSphere($pixelColor, $textBox[8], $textBox[9])
 EndFunc
 
 Func IsButtonPresent(Const ByRef $buttonBox)
    Local $cPos = GetClientPos()
    Local $pixelColor = PixelGetColor($cPos[0]+$buttonBox[4], $cPos[1]+$buttonBox[5])
-
    Return InColorSphere($pixelColor, $buttonBox[6], $buttonBox[7])
 EndFunc
 
 Func IsColorPresent(Const ByRef $colorLocation)
    Local $cPos = GetClientPos()
    Local $pixelColor = PixelGetColor($cPos[0]+$colorLocation[0], $cPos[1]+$colorLocation[1])
-
+   DebugWrite ("Color 1 = "&$pixelColor& " Color 2 = " &$colorLocation[2]&@CRLF)
    Return InColorSphere($pixelColor, $colorLocation[2], $colorLocation[3])
 EndFunc
 
@@ -489,6 +489,15 @@ Func ScanFrameForBestBMP(Const $filename, Const ByRef $bmpArray, Const $threshol
    $bestConfidence = 0
    $bestX = -1
    $bestY = -1
+
+   ConsoleWrite("$filename = "& $filename & @CRLF)
+   ConsoleWrite("$bmpArray[0] = "& $bmpArray[0]& @CRLF)
+   ConsoleWrite("$threshold = "& $threshold & @CRLF)
+   ConsoleWrite("$bestMatch = "& $bestMatch & @CRLF)
+   ConsoleWrite("$bestConfidence = "& $bestConfidence & @CRLF)
+   ConsoleWrite("$bestX = "& $bestX & @CRLF)
+   ConsoleWrite("$bestY = "& $bestY & @CRLF)
+
 
    For $i = 0 to UBound($bmpArray)-1
 	  Local $res = DllCall("ImageMatch.dll", "str", "FindMatch", "str", $filename, "str", "Images\"&$bmpArray[$i], "int", 3)
@@ -550,14 +559,23 @@ Func GrabFrameToFile(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
    Local $cPos = GetClientPos()
    Local $hBitmap
 
+   DebugWrite ("cpos = " &$cPos[0]&", "&$cPos[1]&", "&$cPos[2]&", "&$cPos[3]&@CRLF)
+
+	DebugWrite("Error msg before = " &@error&@CRLF)
    If $x1 = -1 Then
 	  $hBitmap = _ScreenCapture_Capture("", $cPos[0], $cPos[1], $cPos[2], $cPos[3], False)
    Else
 	  $hBitmap = _ScreenCapture_Capture("", $cPos[0]+$x1, $cPos[1]+$y1, $cPos[0]+$x2, $cPos[1]+$y2, False)
    EndIf
 
+   DebugWrite("Error msg after = " &@error&@CRLF)
+   DebugWrite("$hBitmap = " &$hBitmap&@CRLF)
+
+
    Local $frame = _GDIPlus_BitmapCreateFromHBITMAP($hBitmap)
-   _GDIPlus_ImageSaveToFile($frame, $filename)
+   If $frame = 0 Then DebugWrite(" Error @ Line(" & @ScriptLineNumber & ') _GDIPlus_BitmapCreateFromHBITMAP >Error code: ' & @error & " >@extended = "&@extended& @CRLF)
+   If Not _GDIPlus_ImageSaveToFile($frame, $filename) Then DebugWrite(" Error @ Line(" & @ScriptLineNumber & ') _GDIPlus_ImageSaveToFile >Error code: ' & @error & @CRLF)
    _GDIPlus_BitmapDispose($frame)
    _WinAPI_DeleteObject($hBitmap)
+
 EndFunc

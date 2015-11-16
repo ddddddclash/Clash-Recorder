@@ -11,6 +11,7 @@
 ; Debug
 Global Const $gc_ScraperDebug = _Boolean(IniRead($gc_INI_FILE, "Debug", "Scraper Debug", False))
 Global Const $gc_DEBUG = _Boolean(IniRead($gc_INI_FILE, "Debug", "Global Debug", True))
+Global Const $gc_DEBUG_CANVAS = _Boolean(IniRead($gc_INI_FILE, "Debug", "Debug Drawing Canvas", False))
 Global Const $gc_LOG =  _Boolean(IniRead($gc_INI_FILE, "Debug", "Log Debug", True))
 
 ; Files

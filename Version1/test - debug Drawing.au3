@@ -3,16 +3,16 @@
 #include "lib/Debug/drawing.au3"
 
 HotKeySet("{ESC}", "_Exit")
-HotKeySet("h", "_Hide")
-HotKeySet("d", "_DrawGui")
+HotKeySet("h", "Hide")
+HotKeySet("d", "DebugCreateCanvas")
 HotKeySet("r", "rectangle")
 HotKeySet("p", "point")
 HotKeySet("c", "clientRectangle")
 HotKeySet("w", "winRectangle")
 
 
-_DrawGui()
-;rectangle()
+DebugCreateCanvas()
+rectangle()
 
 
 
@@ -21,35 +21,34 @@ While 1
 Wend
 
 
-
 Func _Exit()
-	_DeleteGUI()
+	DebugDestroyCanvas()
 	Exit
 EndFunc
 
 Func rectangle()
-	_DrawRectEx(@DesktopWidth/2-50, @DesktopHeight/2-50, @DesktopWidth/2+50, @DesktopHeight/2+50, 2, 0x000)
+	DebugDrawRectangle(@DesktopWidth/2-50, @DesktopHeight/2-50, @DesktopWidth/2+50, @DesktopHeight/2+50)
 EndFunc
 
 Func point()
-	_DrawPoint(30, 50, 0x000)
+	DebugDrawPoint(@DesktopWidth/2,@DesktopHeight/2, 0x000)
 EndFunc
 
-Func _Hide()
-	_DeleteGUI()
+Func Hide()
+	DebugDestroyCanvas()
 EndFunc
 
 Func clientRectangle()
 	Local $p = WinGetClientPos()
 	ConsoleWrite("Con: "&$p[0]&", "&$p[1]&", "&$p[2]&", "&$p[3]&", "&$p[4]&", "&$p[5]&@CRLF)
-	_DrawRectEx($p[0],$p[1],$p[0]+$p[2],$p[1]+$p[3],1,0xccc)
+	DebugDrawRectangle($p[0],$p[1],$p[0]+$p[2],$p[1]+$p[3],1,0xccc)
 EndFunc
 
 Func winRectangle()
 	WinActivate ($BS_WIN)
 	Local $p = WinGetPos($BS_WIN)
 	ConsoleWrite("win: "&$p[0]&", "&$p[1]&", "&$p[2]&", "&$p[3]&@CRLF)
-	_DrawRectEx($p[0],$p[1],$p[0]+$p[2],$p[1]+$p[3],1,0x000)
+	DebugDrawRectangle($p[0],$p[1],$p[0]+$p[2],$p[1]+$p[3],1,0x000)
 EndFunc
 
 

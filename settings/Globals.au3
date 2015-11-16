@@ -40,7 +40,13 @@ Global $gSpellNames[$eSpellCount] = ["Lightning", "Rage", "Heal", "Jump", "Freez
 Global Enum $eScreenAndroidHome, $eScreenMain, $eScreenChatOpen, $eScreenFindMatch, _
    $eScreenWaitRaid, $eScreenLiveRaid, $eScreenEndBattle, $eScreenShieldIsActive, _
    $eScreenLiveReplayEndBattle, $eScreenVilliageWasAttacked, $eScreenChatDimmed, _
-   $eWindowArmyManager, $eScreenUnknown
+   $eWindowArmyManager, $eScreenUnknown, $eScreenN
+
+Global $gc_aScreens[$eScreenN] = ["Android Home Screen","Main Screen", "Chat Open", "Find Match Screen", _
+									"Wait for Raid to finish Msg", "Live Raid Screen", "End Battle Screen", _
+									"Shield is Active Msg", "Live Replay", "Villate Was attacked Msg", _
+									"Chat Dimmed", "Army Manager Window", "Unknown Screen"]
+
 
 ; Auto Raid/Snipe Stages
 Global Enum $eAutoNotStarted, $eAutoQueueTraining, $eAutoWaitForTrainingToComplete, $eAutoFindMatch, $eAutoExecute

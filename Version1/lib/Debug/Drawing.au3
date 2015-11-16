@@ -11,51 +11,72 @@
 #Include <WindowsConstants.au3>
 
 
-Global $hDC, $hPen, $hWnd ; Needded to Dispose later
-Global $GUI
+;Global $hDC, $hPen, $hWnd ; Needded to Dispose later
+Global $debugGUI = 0
 
-Func _DrawGui()
-	$GUI = GuiCreate("",@DesktopWidth,@DesktopHeight,0, 0,$WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
+
+
+; _DrawGui() has been replaced by _DebugCreateCanvas
+
+Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0)
+	$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
 	GuiSetBkColor(0x123456)
-	_WinAPI_SetLayeredWindowAttributes($GUI,0x123456,255,0x01)
-	WinSetOnTop($GUI, "", 1)
+	_WinAPI_SetLayeredWindowAttributes($debugGUI,0x123456,255,0x01)
+	WinSetOnTop($debugGUI, "", 1)
 	GuiSetState()
-
 EndFunc
 
-Func _DrawRectEx($LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth, $RectColour, $hWnd = $GUI)
-    Local $obj_orig
-    $hDC = _WinAPI_GetWindowDC($hWnd)
-    $hPen = _WinAPI_CreatePen($PS_SOLID, $RectWidth, $RectColour)
-    $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
+
+
+
+
+Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth = 1, $RectColour = 0x000)
+    Local $hDC = _WinAPI_GetWindowDC($debugGUI)
+    Local $hPen = _WinAPI_CreatePen($PS_SOLID, $RectWidth, $RectColour)
+    Local $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
 
 	_WinAPI_DrawLine($hDC, $LeftValue, $TopValue, $RightValue, $TopValue) ; horizontal top
 	_WinAPI_DrawLine($hDC, $LeftValue, $BottomValue,$RightValue , $BottomValue) ; horizontal bottom
 	_WinAPI_DrawLine($hDC, $LeftValue, $TopValue, $LeftValue, $BottomValue) ; vertical left
 	_WinAPI_DrawLine($hDC, $RightValue, $TopValue, $RightValue, $BottomValue) ; vertical right
 
-	_WinAPI_ReleaseDC($hWnd, $hDC)
+	_WinAPI_ReleaseDC($debugGUI, $hDC)
 	_WinAPI_DeleteObject($hPen)
 
-EndFunc   ;==>DrawRectEx
+EndFunc   ;==>DebugDrawRectangle
 
-Func _DrawPoint($x, $y, $colour, $hWnd = $GUI) ; arrow head pointing to cordinates.
-    Local $obj_orig
-    $hDC = _WinAPI_GetWindowDC($hWnd)
-    $hPen = _WinAPI_CreatePen($PS_SOLID, 1, $colour)
-    $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
+Func DebugDrawPoint($x, $y, $colour = 0x000) ; Cross hairs
+    Local $hDC = _WinAPI_GetWindowDC($debugGUI)
+    Local $hPen = _WinAPI_CreatePen($PS_SOLID, 1, $colour)
+    Local $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
+
+	_WinAPI_DrawLine($hDC, $x-6, $y-1, $x-1, $y-1)
+	_WinAPI_DrawLine($hDC, $x, $y-1, $x+5, $y-1)
+	_WinAPI_DrawLine($hDC, $x-1, $y-6, $x-1, $y-1)
+	_WinAPI_DrawLine($hDC, $x-1, $y, $x-1, $y+5)
+
+
+	_WinAPI_ReleaseDC($debugGUI, $hDC)
+	_WinAPI_DeleteObject($hPen)
+
+EndFunc   ;==>DebugDrawPoint
+
+Func DebugDrawArrow($x, $y, $colour =0x000) ; arrow head pointing to cordinates.
+    Local $hDC = _WinAPI_GetWindowDC($debugGUI)
+    Local $hPen = _WinAPI_CreatePen($PS_SOLID, 1, $colour)
+    Local $obj_orig = _WinAPI_SelectObject($hDC, $hPen)
 
 	_WinAPI_DrawLine($hDC, $x, $y, $x+5, $y+1)
 	_WinAPI_DrawLine($hDC, $x, $y, $x+1, $y+5)
 
 
-	_WinAPI_ReleaseDC($hWnd, $hDC)
+	_WinAPI_ReleaseDC($debugGUI, $hDC)
 	_WinAPI_DeleteObject($hPen)
 
-EndFunc   ;==>DrawRectEx
+EndFunc   ;==>DebugDrawArrow
 
 
-Func _DeleteGUI()
-	GUIDelete($GUI)
-EndFunc
+Func DebugDestroyCanvas()
+	GUIDelete($debugGUI)
+EndFunc ;==>DebugDestroyCanvas
 

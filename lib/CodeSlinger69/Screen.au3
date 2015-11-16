@@ -3,15 +3,14 @@
 
 Func ResetToCoCMainScreen()
    Local $countdown = 5
-
    CheckForAndroidMessageBox()
 
    ; Get our current screen
    Local $s = WhereAmI()
-
    Switch $s
 
    ; Main screen, do nothing
+
    Case $eScreenMain
 	  Return
 
@@ -31,7 +30,8 @@ Func ResetToCoCMainScreen()
    Case $eScreenAndroidHome
 	  DebugWrite("On Android Home Screen - Starting Clash of Clans.")
       Local $bestMatch = 99, $bestConfidence = 0, $bestX = 0, $bestY = 0
-	  GrabFrameToFile("HomeScanFrame.bmp")
+
+	 GrabFrameToFile("HomeScanFrame.bmp")
 	  ScanFrameForBestBMP("HomeScanFrame.bmp", $CoCIconBMPs, 0.95, $bestMatch, $bestConfidence, $bestX, $bestY)
 	  If $bestMatch <> 99 Then
 		 Local $button[4] = [$bestX, $bestY, $bestX+$rScreenAndroidHomeCoCIconButton[2], $bestY+$rScreenAndroidHomeCoCIconButton[3]]
@@ -64,7 +64,6 @@ Func ResetToCoCMainScreen()
    ; Live Replay End Battle screen - click "Return Home"
    Case $eScreenLiveReplayEndBattle
 	  RandomWeightedClick($rLiveReplayEndScreenReturnHomeButton)
-
    Case $eScreenVilliageWasAttacked
 	  RandomWeightedClick($rWindowVilliageWasAttackedOkayButton)
 
@@ -75,7 +74,6 @@ Func ResetToCoCMainScreen()
    ; Shield Is Active screen
    Case $eScreenShieldIsActive
 	  RandomWeightedClick($rShieldIsActivePopupButton)
-
    EndSwitch
 
    ; Wait for main screen to appear
@@ -83,26 +81,29 @@ Func ResetToCoCMainScreen()
 	  Sleep(1000)
 	  $countdown -= 1
    WEnd
-
    ZoomOut(True)
 EndFunc
-
 Func WhereAmI()
    ; $ScreenAndroidHome
    Local $bestMatch, $bestConfidence, $bestX, $bestY
-   GrabFrameToFile("HomeScanFrame.bmp")
+   Local $cPos = GetClientPos()
+
+   ;GrabFrameToFile("HomeScanFrame.bmp")
    ScanFrameForBestBMP("HomeScanFrame.bmp", $CoCIconBMPs, 0.95, $bestMatch, $bestConfidence, $bestX, $bestY)
    ;DebugWrite("Android Home Scan: " & $bestMatch & " " & $bestConfidence & " " & $bestX & " " & $bestY)
-
    If $bestMatch <> -1 Then
 	  Return $eScreenAndroidHome
    EndIf
 
    ; $ScreenMain
    If IsColorPresent($rScreenMainColor) Then Return $eScreenMain
+   DebugDrawPoint($cPos[0]+$rScreenMainColor[0], $cPos[1]+$rScreenMainColor[1])
+   DebugDrawLabel("ScreenMainColor",$cPos[0]+$rScreenMainColor[0]+20, $cPos[1]+$rScreenMainColor[1]-4, 150,17)
 
    ; $ScreenChatOpen
    If IsButtonPresent($rMainScreenOpenChatButton) Then Return $eScreenChatOpen
+  ;DebugDrawPoint($cPos[0]+$rScreenMainColor[0], $cPos[1]+$rScreenMainColor[1])
+   ;DebugDrawLabel("ScreenMainColor",$cPos[0]+$rScreenMainColor[0]+20, $cPos[1]+$rScreenMainColor[1]-4, 150,17)
 
    ; $WindowChatDimmed
    If IsColorPresent($rWindowChatDimmedColor) Then Return $eScreenChatDimmed
@@ -143,13 +144,10 @@ Func WhereAmI()
    FileMove("HomeScanFrame.bmp", "UnknownScreen-" & $datetimestamp & ".bmp")
    #ce
    Return $eScreenUnknown
-
 EndFunc
-
 Func ZoomOut(Const $clearOnSafeSpot)
    WinActivate($gTitle)
    WinWaitActive($gTitle)
-
    Local $s = WhereAmI()
    If $s=$eScreenMain Or $s=$eScreenWaitRaid Or $s=$eScreenLiveRaid Then
 	  For $i = 1 To 3
@@ -158,79 +156,62 @@ Func ZoomOut(Const $clearOnSafeSpot)
 		 Else
 			ControlSend($gTitle, "", "", "^-", 0)
 		 EndIf
-
 		 Sleep(250)
 	  Next
-
 	  Sleep(150)
-
 	  If $clearOnSafeSpot Then
 		 RandomWeightedClick($rSafeAreaButton)
 		 Sleep(250)
 	  EndIf
    EndIf
 EndFunc
-
 Func MoveScreenDownToTop(Const $clearOnSafeSpot)
    Local $startX, $startY
    Local $startBox[4] = [300, 65, 725, 110]
    RandomWeightedCoords($startBox, $startX, $startY)
-
    Local $endX, $endY
    Local $endBox[4] = [300, 365, 725, 410]
    RandomWeightedCoords($endBox, $endX, $endY)
-
    If $clearOnSafeSpot = True Then
 	  RandomWeightedClick($rSafeAreaButton)
 	  Sleep(250)
    EndIf
-
    _ClickDrag($startX, $startY, $endX, $endY)
    Sleep(250)
 EndFunc
-
 Func MoveScreenUpToCenter(Const $dist=83)
    ; Always 83 pixels up
    Local $startX, $startY
    Local $startBox[4] = [450, 365, 575, 410]
    RandomWeightedCoords($startBox, $startX, $startY)
-
    Local $endX, $endY
    Local $endBox[4] = [450, 365, 575, 410]
    RandomWeightedCoords($endBox, $endX, $endY)
-
    _ClickDrag($startX, $startY, $endX, $startY-$dist)
    Sleep(250)
 EndFunc
-
 Func MoveScreenUpToBottom(Const $clearOnSafeSpot)
    If $clearOnSafeSpot = True Then
 	  RandomWeightedClick($rSafeAreaButton)
 	  Sleep(250)
    EndIf
-
    Local $startX, $startY
    Local $startBox[4] = [300, 365, 725, 410]
    RandomWeightedCoords($startBox, $startX, $startY)
-
    Local $endX, $endY
    Local $endBox[4] = [300, 65, 725, 110]
    RandomWeightedCoords($endBox, $endX, $endY)
-
    _ClickDrag($startX, $startY, $endX, $endY)
    Sleep(250)
 EndFunc
-
 Func MoveScreenDownToCenter(Const $dist=155)
    ; Always 155 pixels down
    Local $startX, $startY
    Local $startBox[4] = [450, 225, 575, 270]
    RandomWeightedCoords($startBox, $startX, $startY)
-
    Local $endX, $endY
    Local $endBox[4] = [450, 225, 575, 270]
    RandomWeightedCoords($endBox, $endX, $endY)
-
    _ClickDrag($startX, $startY, $startY, $startY+$dist)
    Sleep(250)
 EndFunc

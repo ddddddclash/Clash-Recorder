@@ -1,29 +1,35 @@
-; My plan is to use this to make a stand alone tool to resize Bluestacks.
-; It requires things that aren't necessary here.
+;----------------------------------------------------------------------------------
+; Author : CodeSlinger69
+; Modified by: dddddd.clash
+; Date: 2015/11/13
+; Notes: Modified to be used as a stand alone library called by BlueStacks_resize
+;----------------------------------------------------------------------------------
+
+#include <File.au3>
+
+
 
 Func StartBlueStacks()
-   CheckIfBlueStacksIsRunning()
+	Local $cSize
+	If Not CheckIfBlueStacksIsRunning() Then Return
+	$cSize = WinGetClientSize($gTi tle)
+	If ($cSize[0] <> $gBlueStacksWidth) Or ($cSize[1] <> $gBlueStacksHeight) Then
+		Local $res = MsgBox(BitOr($MB_OKCANCEL, $MB_ICONQUESTION), "", "BlueStacks window is the wrong size." &@CRLF& "Click OK to quit BlueStacks and resize.")
+		If $res = $IDCANCEL Then
+			Return
+		EndIf
 
-   Local $clientPos = GetClientPos()
-   If $clientPos[2]-$clientPos[0]+1<>$gBlueStacksWidth Or $clientPos[3]-$clientPos[1]+1<>$gBlueStacksHeight Then
-	  Local $res = MsgBox(BitOr($MB_OKCANCEL, $MB_ICONQUESTION), "BlueStacks Wrong Size", "BlueStacks window is the wrong size." & @CRLF & _
-		 "Click OK to resize, or Cancel to Exit.")
+		FixBlueStacksSize()
 
-	  If $res = $IDCANCEL Then
-		 Exit
-	  EndIf
+		If Not CheckIfBlueStacksIsRunning() Then Return
 
-	  FixBlueStacksSize()
+		$cSize = WinGetClientSize($gTitle)
 
-	  CheckIfBlueStacksIsRunning()
-
-	  $clientPos = GetClientPos()
-	  If $clientPos[2]-$clientPos[0]+1<>$gBlueStacksWidth Or $clientPos[3]-$clientPos[1]+1<>$gBlueStacksHeight Then
-		 MsgBox(BitOr($MB_OK, $MB_ICONERROR), "BlueStacks Wrong Size", "BlueStacks window is still the wrong size." & @CRLF & _
-			"Please correct manually.")
-		 Exit
-	  EndIf
-   EndIf
+		If ($cSize[0] <> $gBlueStacksWidth) Or ($cSize[1] <> $gBlueStacksHeight) Then
+			MsgBox(BitOr($MB_OK, $MB_ICONERROR), "BlueStacks Wrong Size", "BlueStacks window is still the wrong size." & @CRLF & "Please correct manually.")
+			Return
+		EndIf
+	EndIf
 
 EndFunc
 
@@ -40,9 +46,10 @@ Func CheckIfBlueStacksIsRunning()
    If $isActive Then
 	  WinMove($gTitle, "", 4, 4)
    Else
-	  MsgBox(BitOr($MB_OK, $MB_ICONERROR), "BlueStacks Not Running", "Cannot find or activate BlueStacks window." & @CRLF & @CRLF & "Exiting.")
-	  Exit
+	  MsgBox(BitOr($MB_OK, $MB_ICONERROR), "BlueStacks Not Running", "Cannot find or activate BlueStacks window." )
+	  Return False
    EndIf
+   Return True
 EndFunc
 
 Func FixBlueStacksSize()
@@ -56,19 +63,25 @@ Func FixBlueStacksSize()
    Local $bsProcesses[7] = ["HD-Service.exe", "HD-FrontEnd.exe", "HD-Agent.exe", "HD-BlockDevice.exe", "HD-Network.exe", _
 						    "HD-SharedFolder.exe", "HD-UpdaterService.exe"]
 
+
    For $i = 0 To UBound($bsProcesses)-1
 
 	  If ProcessExists($bsProcesses[$i]) Then
+		 DebugWrite("Process - "&$bsProcesses[$i]&": Exists attempting to close.")
 		 $res = ProcessClose($bsProcesses[$i])
+		 ;$res = ProcessWaitClose($bsProcesses[$i])
 		 If $res<>1 Then
-			DebugWrite("Error killing BlueStacks process: " & $bsProcesses[$i] & " Code: " & $res)
+			DebugWrite("Error killing BlueStacks process: " & $bsProcesses[$i] & " Return Value: " & $res & " Error Code: "&@error)
 			MsgBox(BitOr($MB_OK, $MB_ICONERROR), "Error killing process", "Error killing BlueStacks process: " & $bsProcesses[$i] & @CRLF & _
 			   "Please correct manually.")
 			Exit
 		 Else
 			DebugWrite("Killed BlueStacks process: " & $bsProcesses[$i])
 		 EndIf
+	  Else
+		 DebugWrite("Process - "&$bsProcesses[$i]&": Does not exist!")
 	  EndIf
+
    Next
 
    ; Write correct registry entries
@@ -140,4 +153,26 @@ Func FixBlueStacksSize()
    DebugWrite("BlueStacks started successfully.")
 
    Sleep(1000)
+EndFunc
+
+; Returns the absolute position of the client window
+; Added from Scraper.au3
+Func GetClientPos()
+   Local $cPos[4]
+
+   ; Get absolute coordinates of client area
+   Local $hWnd = WinGetHandle($gTitle)
+   Local $cSize = WinGetClientSize($gTitle)
+
+   Local $tPoint = DllStructCreate("int X;int Y")
+   DllStructSetData($tPoint, "X", 0)
+   DllStructSetData($tPoint, "Y", 0)
+
+   _WinAPI_ClientToScreen($hWnd, $tPoint)
+   $cPos[0] = DllStructGetData($tPoint, "X")
+   $cPos[1] = DllStructGetData($tPoint, "Y")
+   $cPos[2] = $cPos[0]+$cSize[0]-1
+   $cPos[3] = $cPos[1]+$cSize[1]-1
+
+   Return $cPos
 EndFunc
