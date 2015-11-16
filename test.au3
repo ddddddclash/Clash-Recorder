@@ -31,19 +31,25 @@ Global $gTitle = $BS_TITLE
 #include "lib/CodeSlinger69/Screen.au3"
 #include "lib/CodeSlinger69/TownHall.au3"
 
-;Simple change
 
-
+#Region - test Gui
+;Local $gw = 297
+;Local $gh = 273
+;Local $p = WinGetPos($BS_WIN)
+;WinActivate ($BS_WIN)
+;Global $hGUI = GUICreate("Where Am I? Tool",$gw, $gh, $p[0] + $p[2] + 8, $p[1] + ($p[3]/2) - ($gh / 2))
+;Global $hGUI = GUICreate("Where Am I? Tool", $gw, $gh, @DesktopWidth - $gw -20 , 20)
 
 Global $hGUI = GUICreate("Where Am I? Tool", 297, 273, 192, 124)
-Global $btn_where_am_i = GUICtrlCreateButton("Where Am I?", 104, 32, 75, 25)
 
+GUISetOnEvent($GUI_EVENT_CLOSE, "Die")
+
+Global $btn_where_am_i = GUICtrlCreateButton("Where Am I?", 104, 32, 75, 25)
+GUICtrlSetOnEvent($btn_where_am_i, "btnGo_WhereAmI")
 Global $Edit1 = GUICtrlCreateEdit("", 40, 72, 233, 161, BitOR($ES_AUTOVSCROLL,$ES_AUTOHSCROLL,$ES_READONLY))
 
 GUISetState(@SW_SHOW)
-
-GUISetOnEvent($GUI_EVENT_CLOSE, "Die")
-GUICtrlSetOnEvent($btn_where_am_i, "btnGo_WhereAmI")
+#EndRegion - test gui
 
 DebugCreateCanvas()
 
