@@ -18,10 +18,10 @@ Global $debugGUI = 0
 
 ; _DrawGui() has been replaced by _DebugCreateCanvas
 
-;Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0)
+;Func DebugCreateCanvas($width = @DesktopWidth, $height = @DesktopHeight, $left = 0, $top = 0) ;this line does not perform as desired.
 Func DebugCreateCanvas()
 	If Not $gc_DEBUG_CANVAS Then Return
-	;$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
+	;$debugGUI = GuiCreate("",$width,$height,$left, $top, $WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT)) ; becasue when it gets here the second time it says the variables haven't been defined.
 	$debugGUI = GuiCreate("",@DesktopWidth,@DesktopHeight,0, 0,$WS_POPUP, bitor($WS_EX_LAYERED,$WS_EX_TRANSPARENT))
 	GuiSetBkColor(0x123456)
 	_WinAPI_SetLayeredWindowAttributes($debugGUI,0x123456,255,0x01)
@@ -49,15 +49,28 @@ Func DebugDrawLabel($text, $x, $y, $width, $height)
 EndFunc
 #ce
 
+
+Func DebugIsPresent($var_name)
+	If StringInStr($var_name,"Color") Then
+		$x= Execute($var_name&"[0]")
+		$y= Execute($var_name&"[1]")
+	ElseIf StringInStr($var_name,"Button") Then
+		$x= Execute($var_name&"[4]")
+		$y= Execute($var_name&"[5]")
+	Else
+		Return -1 ;Error
+	EndIf
+	DebugDrawPointLabel($x,$y,StringMid($var_name,3))
+EndFunc
+
 Func DebugDrawPointLabel($x,$y,$text)
-ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(54) :    	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return'  & @CRLF) ;### Trace Console
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
-ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(56) :    	GUISwitch($debugGUI)'  & @CRLF) ;### Trace Console
+	Local $cpos = GetClientPos()
+	$x = $cpos[0] + $x
+	$y = $cpos[1] + $y
 	GUISwitch($debugGUI)
 	GUICtrlCreateLabel($text, $x+10, $y)
-ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(59) :    	GUICtrlSetBkColor(-1, 0xffffff)'  & @CRLF) ;### Trace Console
 	GUICtrlSetBkColor(-1, 0xffffff)
-ConsoleWrite('>Error code: ' & @error & @CRLF & @CRLF & '@@ Trace(61) :    	DebugDrawPoint($x,$y)'  & @CRLF) ;### Trace Console
 	DebugDrawPoint($x,$y)
 EndFunc
 

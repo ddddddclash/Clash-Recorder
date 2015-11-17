@@ -44,7 +44,7 @@ Global Enum $eScreenAndroidHome, $eScreenMain, $eScreenChatOpen, $eScreenFindMat
 
 Global $gc_aScreens[$eScreenN] = ["Android Home Screen","Main Screen", "Chat Open", "Find Match Screen", _
 									"Wait for Raid to finish Msg", "Live Raid Screen", "End Battle Screen", _
-									"Shield is Active Msg", "Live Replay", "Villate Was attacked Msg", _
+									"Shield is Active Msg", "Live Replay", "Village Was attacked Msg", _
 									"Chat Dimmed", "Army Manager Window", "Unknown Screen"]
 
 

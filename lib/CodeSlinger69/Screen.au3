@@ -86,9 +86,15 @@ EndFunc
 Func WhereAmI()
    ; $ScreenAndroidHome
    Local $bestMatch, $bestConfidence, $bestX, $bestY
-   Local $cPos = GetClientPos()
+
 
 #cs
+;Changed by: dddddd.clash
+;on: 2015/11/16
+;This section is commented out because it contains a bug that prevnts the program from continuing.
+;It doesn't create an error it just crashes. I will likely remove these lines because I have no reason to detect the home icon.
+;A point of concern is that the ScanFrameForBestBMP is where the problem appears to be. I expect to need this function later.
+
    ;GrabFrameToFile("HomeScanFrame.bmp")
    ScanFrameForBestBMP("HomeScanFrame.bmp", $CoCIconBMPs, 0.95, $bestMatch, $bestConfidence, $bestX, $bestY)
    ;DebugWrite("Android Home Scan: " & $bestMatch & " " & $bestConfidence & " " & $bestX & " " & $bestY)
@@ -97,16 +103,30 @@ Func WhereAmI()
 EndIf
 #ce
 
+	;Draw Debug points & Labels
+	;added: dddddd.clash
+	;on: 2015/11/16
+	;needs to be before the if statements becasue if true they will return and skip the statement
+
+	;DebugIsPresent("$rScreenMainColor")
+	;DebugIsPresent("$rMainScreenOpenChatButton")
+	;DebugIsPresent("$rWindowChatDimmedColor")
+	;DebugIsPresent("$rShieldIsActivePopupButton")
+	;DebugIsPresent("$rFindMatchScreenFindAMatchButton")
+	;DebugIsPresent("$rWaitRaidScreenNextButton")
+	;DebugIsPresent("$rScreenLiveRaid1Color")
+	;DebugIsPresent("$rScreenLiveRaid2Color")
+	;DebugIsPresent("$rBattleHasEndedScreenReturnHomeButton")
+	DebugIsPresent("$rLiveReplayEndScreenReturnHomeButton")
+	;DebugIsPresent("$rWindowVilliageWasAttackedOkayButton")
+	;DebugIsPresent("$rArmyManagerWindowCloseButton")
+
+
    ; $ScreenMain
    If IsColorPresent($rScreenMainColor) Then Return $eScreenMain
-   DebugDrawPointLabel($cPos[0]+$rScreenMainColor[0],$cPos[1]+$rScreenMainColor[1],"ScreenMainColor")
-   ;DebugDrawPoint($cPos[0]+$rScreenMainColor[0], $cPos[1]+$rScreenMainColor[1])
-   ;DebugDrawLabel("ScreenMainColor",$cPos[0]+$rScreenMainColor[0]+20, $cPos[1]+$rScreenMainColor[1]-4, 150,17)
 
    ; $ScreenChatOpen
    If IsButtonPresent($rMainScreenOpenChatButton) Then Return $eScreenChatOpen
-  ;DebugDrawPoint($cPos[0]+$rScreenMainColor[0], $cPos[1]+$rScreenMainColor[1])
-   ;DebugDrawLabel("ScreenMainColor",$cPos[0]+$rScreenMainColor[0]+20, $cPos[1]+$rScreenMainColor[1]-4, 150,17)
 
    ; $WindowChatDimmed
    If IsColorPresent($rWindowChatDimmedColor) Then Return $eScreenChatDimmed

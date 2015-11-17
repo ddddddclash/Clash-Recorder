@@ -480,7 +480,6 @@ EndFunc
 Func IsColorPresent(Const ByRef $colorLocation)
    Local $cPos = GetClientPos()
    Local $pixelColor = PixelGetColor($cPos[0]+$colorLocation[0], $cPos[1]+$colorLocation[1])
-   DebugWrite ("Color 1 = "&$pixelColor& " Color 2 = " &$colorLocation[2]&@CRLF)
    Return InColorSphere($pixelColor, $colorLocation[2], $colorLocation[3])
 EndFunc
 
