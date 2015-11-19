@@ -117,7 +117,7 @@ EndIf
 	;DebugIsPresent("$rScreenLiveRaid1Color")
 	;DebugIsPresent("$rScreenLiveRaid2Color")
 	;DebugIsPresent("$rBattleHasEndedScreenReturnHomeButton")
-	DebugIsPresent("$rLiveReplayEndScreenReturnHomeButton")
+	;DebugIsPresent("$rLiveReplayEndScreenReturnHomeButton")
 	;DebugIsPresent("$rWindowVilliageWasAttackedOkayButton")
 	;DebugIsPresent("$rArmyManagerWindowCloseButton")
 

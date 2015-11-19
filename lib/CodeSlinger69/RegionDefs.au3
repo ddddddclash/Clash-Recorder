@@ -27,6 +27,8 @@ Global $rEndBattleBonusDarkTextBox[10] = [645, 333, 715, 345, 0xffffff, 9, 730, 
 
 Global $rChatTextBox[10] = [0, 0, 233, 9, 0xffffff, 120, 0, 0, 0, 0]
 
+
+
 ; Buttons
 ; Left, Top, Right, Bottom,
 ; Button Present Pixel Loc - x, y,

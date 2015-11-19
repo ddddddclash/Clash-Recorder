@@ -554,6 +554,7 @@ Func GetClientPos()
    Return $cPos
 EndFunc
 
+;Must call InitScraper() first which calls _GDIPlus_Startup()
 Func GrabFrameToFile(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
    Local $cPos = GetClientPos()
    Local $hBitmap
@@ -578,3 +579,17 @@ Func GrabFrameToFile(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
    _WinAPI_DeleteObject($hBitmap)
 
 EndFunc
+
+;This is my version that does not require _GDIPlus
+Func GrabFrameToFile2(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
+   Local $cPos = GetClientPos()
+   If $x1 = -1 Then
+		_ScreenCapture_Capture($filename, $cPos[0], $cPos[1], $cPos[2], $cPos[3], False)
+   Else
+		_ScreenCapture_Capture($filename, $cPos[0]+$x1, $cPos[1]+$y1, $cPos[0]+$x2, $cPos[1]+$y2, False)
+   EndIf
+
+EndFunc
+
+
+

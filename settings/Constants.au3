@@ -2,7 +2,7 @@ Global Const $VERSION = "2"
 
 ;Blue Stacks - used enough that I did not add the 'gc_' Global Constant prefix
 Global Const $BS_TITLE = "BlueStacks App Player"
-Global Const $BS_WIN = WinGetHandle($BS_TITLE)
+Global $BS_WIN = WinGetHandle($BS_TITLE)  ; should not be a constant. This changes at run time and should be updated if bluestacks is open.
 
 ;GUI
 Global Const $GUI_WIDTH = 877

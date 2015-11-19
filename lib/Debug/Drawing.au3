@@ -9,6 +9,7 @@
 #include-once
 #Include <WinAPI.au3>
 #Include <WindowsConstants.au3>
+#include <GuiImageList.au3>
 
 
 ;Global $hDC, $hPen, $hWnd ; Needded to Dispose later
@@ -63,20 +64,44 @@ Func DebugIsPresent($var_name)
 	DebugDrawPointLabel($x,$y,StringMid($var_name,3))
 EndFunc
 
-Func DebugDrawPointLabel($x,$y,$text)
+Func DebugToFront()
+	WinActivate ($debugGUI)
+EndFunc
+
+
+Func DebugDrawTextArea($textBox,$label)
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
+	Local $c = GetClientPos()
+	DebugDrawRectangle($textBox[0]+$c[0],$textBox[1]+$c[1],$textBox[2]+$c[0],$textBox[3]+$c[1])
+	DebugDrawPoint($textBox[6]+$c[0],$textBox[7]+$c[1])
+
+	GUISwitch($debugGUI)
+	GUICtrlCreateLabel($label, $textBox[0]+$c[0], $textBox[1]+$c[1]-25)
+	GUICtrlSetBkColor(-1, 0xffffff)
+	Local $hColors = _GUIImageList_Create(25,25)
+	 _GUIImageList_Add($hColors,_WinAPI_CreateSolidBitmap($debugGUI,$textBox[4],25,25))
+	 _GUIImageList_Add($hColors, _WinAPI_CreateSolidBitmap($debugGUI,$textBox[8],25,25))
+
+	Local $hDC = _WinAPI_GetDC($debugGUI)
+	_GUIImageList_Draw($hColors, 0, $hDC, $textBox[0]+$c[0], $c[1]+$textBox[3]+5)
+	_GUIImageList_Draw($hColors, 1, $hDC, $textBox[0]+$c[0]+30, $c[1]+$textBox[3]+5)
+	_WinAPI_ReleaseDC($debugGUI, $hDC)
+
+EndFunc
+
+
+Func DebugDrawPointLabel($x,$y,$label)
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
 	Local $cpos = GetClientPos()
 	$x = $cpos[0] + $x
 	$y = $cpos[1] + $y
 	GUISwitch($debugGUI)
-	GUICtrlCreateLabel($text, $x+10, $y)
+	GUICtrlCreateLabel($label, $x+10, $y)
 	GUICtrlSetBkColor(-1, 0xffffff)
 	DebugDrawPoint($x,$y)
 EndFunc
 
-Func DebugToFront()
-	WinActivate ($debugGUI)
-EndFunc
+
 
 Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth = 1, $RectColour = 0x000)
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return

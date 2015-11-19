@@ -42,5 +42,6 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-#Log Files
+#Log Files - Clash Recorder
 *.log
+conversion/
