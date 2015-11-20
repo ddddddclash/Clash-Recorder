@@ -83,6 +83,7 @@ Func ResetToCoCMainScreen()
    WEnd
    ZoomOut(True)
 EndFunc
+
 Func WhereAmI()
    ; $ScreenAndroidHome
    Local $bestMatch, $bestConfidence, $bestX, $bestY

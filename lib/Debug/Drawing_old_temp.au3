@@ -30,9 +30,27 @@ Func DebugCreateCanvas()
 	GuiSetState()
 EndFunc
 
-; shouldn't be necessary any more because of debugDraw Pixel.Confirm before deleting
-; commented out on 11/19/2015
 #cs
+Func DebugDrawLabel($text, $x, $y, $width, $height)
+	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
+	;GuiSetState(@SW_SHOW,$debugGUI)
+	;GUICtrlCreateLabel("Width:", $x+20, $y-4, 35, 17)
+
+	Local $hDC = _WinAPI_GetWindowDC($debugGUI)
+	Local $g_tRECT = DllStructCreate($tagRect)
+
+	DllStructSetData($g_tRECT, "Left", $x)
+	DllStructSetData($g_tRECT, "Top", $y)
+	DllStructSetData($g_tRECT, "Right", $x + $width)
+	DllStructSetData($g_tRECT, "Bottom", $y + $height)
+
+	_WinAPI_DrawText($hDC, $text, $g_tRECT, $DT_Left)
+	_WinAPI_ReleaseDC($debugGUI, $hDC)
+
+EndFunc
+#ce
+
+
 Func DebugIsPresent($var_name)
 	If StringInStr($var_name,"Color") Then
 		$x= Execute($var_name&"[0]")
@@ -45,7 +63,6 @@ Func DebugIsPresent($var_name)
 	EndIf
 	DebugDrawPointLabel($x,$y,StringMid($var_name,3))
 EndFunc
-#ce
 
 Func DebugToFront()
 	WinActivate ($debugGUI)
@@ -57,58 +74,41 @@ Func DebugDrawTextArea($textBox,$label)
 	Local $c = GetClientPos()
 	DebugDrawRectangle($textBox[0]+$c[0],$textBox[1]+$c[1],$textBox[2]+$c[0],$textBox[3]+$c[1])
 	DebugDrawPoint($textBox[6]+$c[0],$textBox[7]+$c[1])
-	DebugDrawLabel($label, $textBox[0]+$c[0], $textBox[1]+$c[1]-25)
-	DebugDrawColor($textBox[4],$textBox[0]+$c[0], $c[1]+$textBox[3]+5)
-	DebugDrawColor($textBox[8],$textBox[0]+$c[0]+30, $c[1]+$textBox[3]+5)
-EndFunc	;==>DebugDrawTextArea
 
-Func DebugDrawButton($button,$label)
-	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
-	Local $c = GetClientPos()
-	DebugDrawRectangle($button[0]+$c[0],$button[1]+$c[1],$button[2]+$c[0],$button[3]+$c[1])
-	DebugDrawPoint($button[4]+$c[0],$button[5]+$c[1])
-	DebugDrawLabel($label, $button[0]+$c[0], $button[1]+$c[1]-25)
-	DebugDrawColor($button[6],$button[0]+$c[0], $c[1]+$button[3]+5)
-EndFunc	;==>DebugDrawButton
-
-Func DebugDrawPixel($pixel,$label)
-	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
-	Local $c = GetClientPos()
-	DebugDrawPointLabel($pixel[0],$pixel[1],$label)
-	DebugDrawColor($pixel[3],$c[0]+$pixel[0], $c[1]+ $pixel[1]+15)
-EndFunc	;==>DebugDrawPixel
-
-
-
-; draws color rectangle relative to screen
-Func DebugDrawColor($color,$x,$y)
-	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
+	GUISwitch($debugGUI)
+	GUICtrlCreateLabel($label, $textBox[0]+$c[0], $textBox[1]+$c[1]-25)
+	GUICtrlSetBkColor(-1, 0xffffff)
 	Local $hColors = _GUIImageList_Create(25,25)
-	 _GUIImageList_Add($hColors,_WinAPI_CreateSolidBitmap($debugGUI,$color,25,25))
-	Local $hDC = _WinAPI_GetDC($debugGUI)
-	_GUIImageList_Draw($hColors, 0, $hDC, $x, $y)
-	_WinAPI_ReleaseDC($debugGUI, $hDC)
-EndFunc ;==>DebugDrawColor
+	 _GUIImageList_Add($hColors,_WinAPI_CreateSolidBitmap($debugGUI,$textBox[4],25,25))
+	 _GUIImageList_Add($hColors, _WinAPI_CreateSolidBitmap($debugGUI,$textBox[8],25,25))
 
-; draws point relative to client window
+	Local $hDC = _WinAPI_GetDC($debugGUI)
+	_GUIImageList_Draw($hColors, 0, $hDC, $textBox[0]+$c[0], $c[1]+$textBox[3]+5)
+	_GUIImageList_Draw($hColors, 1, $hDC, $textBox[0]+$c[0]+30, $c[1]+$textBox[3]+5)
+	_WinAPI_ReleaseDC($debugGUI, $hDC)
+
+EndFunc
+
+
 Func DebugDrawPointLabel($x,$y,$label)
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
 	Local $cpos = GetClientPos()
 	$x = $cpos[0] + $x
 	$y = $cpos[1] + $y
-	DebugDrawLabel($label, $x+10, $y)
+	GUISwitch($debugGUI)
+	GUICtrlCreateLabel($label, $x+10, $y)
+	GUICtrlSetBkColor(-1, 0xffffff)
 	DebugDrawPoint($x,$y)
-EndFunc	;==>DebugDrawPointLabel
+EndFunc
 
-;draws point relative to screen cordinates.
 Func DebugDrawLabel($text,$x,$y)
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
 	GUISwitch($debugGUI)
 	GUICtrlCreateLabel($text, $x, $y)
 	GUICtrlSetBkColor(-1, 0xffffff)
-EndFunc	;==>DebugDrawLabel
+EndFunc
 
-;draws rectangle relative to screen
+
 Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectWidth = 1, $RectColour = 0x000)
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
     Local $hDC = _WinAPI_GetWindowDC($debugGUI)
@@ -125,7 +125,6 @@ Func DebugDrawRectangle($LeftValue, $TopValue, $RightValue, $BottomValue, $RectW
 
 EndFunc   ;==>DebugDrawRectangle
 
-;draws point relative to screen
 Func DebugDrawPoint($x, $y, $colour = 0x000) ; Cross hairs
 	If Not $gc_DEBUG_CANVAS or $debugGUI = 0 Then Return
     Local $hDC = _WinAPI_GetWindowDC($debugGUI)

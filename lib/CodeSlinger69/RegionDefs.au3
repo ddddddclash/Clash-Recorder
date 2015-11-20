@@ -27,6 +27,11 @@ Global $rEndBattleBonusDarkTextBox[10] = [645, 333, 715, 345, 0xffffff, 9, 730, 
 
 Global $rChatTextBox[10] = [0, 0, 233, 9, 0xffffff, 120, 0, 0, 0, 0]
 
+Global $g_sTextBoxRegions = "$rGoldTextBox|$rElixTextBox|$rDarkTextBox|$rCupsTextBox1|$rCupsTextBox2|"& _
+	"$rMyGoldTextBox|$rMyElixTextBox|$rMyDarkTextBox|$rMyGemsTextBox|$rMyCupsTextBox|$rBarracksWindowTextBox|"& _
+	"$rBarracksTroopCountTextBox|$rEndBattleGoldTextBox|$rEndBattleElixTextBox|$rEndBattleDarkTextBox|"& _
+	"$rEndBattleCups1TextBox|$rEndBattleCups2TextBox|$rEndBattleBonusGoldTextBox|$rEndBattleBonusElixTextBox|"& _
+	"$rEndBattleBonusDarkTextBox|$rChatTextBox"
 
 
 ; Buttons
@@ -64,6 +69,19 @@ Global $rArmyManagerWindowSpells2Button[8] = [739, 438, 787, 478, 0, 0, 0, 0]
 Global $rRaidSlotsButton1[4] = [173, 472, 228, 545]
 Global $rRaidSlotsButton2[4] = [235, 472, 290, 545]
 
+Global $g_sButtonRegions = "$rScreenAndroidHomeCoCIconButton|$rAndroidMessageButton|$rMainScreenAttackButton|"& _
+	"$rFindMatchScreenFindAMatchButton|$rWaitRaidScreenNextButton|$rLiveRaidScreenEndBattleButton|"& _
+	"$rLiveRaidScreenEndBattleConfirmButton|$rMainScreenOpenChatButton|$rMainScreenClosedChatButton|"& _
+	"$rChatWindowDonateButton|$rBattleHasEndedScreenReturnHomeButton|$rLiveReplayEndScreenReturnHomeButton|"& _
+	"$rWindowVilliageWasAttackedOkayButton|$rShieldIsActivePopupButton|$rSafeAreaButton|$rCollectorButton|"& _
+	"$rTrainTroopsWindowDequeueButton|$rArmyManagerButton|$rArmyManagerWindowCloseButton|"& _
+	"$rArmyManagerWindowStandard1Button|$rArmyManagerWindowStandard2Button|$rArmyManagerWindowStandard3Button|"& _
+	"$rArmyManagerWindowStandard4Button|$rArmyManagerWindowDark1Button|$rArmyManagerWindowDark2Button|"& _
+	"$rRaidSlotsButton1|$rRaidSlotsButton2"
+
+
+
+
 ; Pixel color regions
 ; x, y, color, radius
 Global $rScreenMainColor[4] = [196, 27, 0x2880C0, 0]
@@ -79,3 +97,29 @@ Global $rFirstStarColor[4] = [899, 437, 0xc4c8c0, 6]
 Global $rAttackingDisabledPoint1Color[4] = [331, 154, 0xff1919, 0]
 Global $rAttackingDisabledPoint2Color[4] = [451, 159, 0xff1919, 0]
 Global $rAttackingDisabledPoint3Color[4] = [613, 161, 0xff1919, 0]
+
+Global $g_sPixelRegions = "$rScreenMainColor|$rScreenLiveRaid1Color|$rScreenLiveRaid2Color|$rArmyCampsFullColor|"& _
+	"$rArmyCampsFullColor|$rRoyaltyHealthGreenColor|$rWindowDonateTroopsColor|$rWindowChatDimmedColor|"& _
+	"$rNewChatMessagesColor|$rDeadBaseIndicatorColor|$rFirstStarColor|$rAttackingDisabledPoint1Color|"& _
+	"$rAttackingDisabledPoint2Color|$rAttackingDisabledPoint3Color"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
