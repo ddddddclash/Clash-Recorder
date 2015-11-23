@@ -17,12 +17,6 @@ Func InfoDestroy()
 EndFunc
 
 
-
-;used by Codeslinger69 code.
-Func GetClientPos()
-	Return WinGetClientPos($private_info_hWin)
-EndFunc
-
 Func WinGetClientPos($hwind)
 	WinActivate ($hwind)
 	local $aWin_Pos = WinGetPos($hwind)
@@ -56,18 +50,22 @@ EndFunc
 ;============================================================
 
 Func MarkRectangle($hwind=0,$boundArea=1,$showTransparent=False)
-    Local $aMouse_Pos, $aWin_Pos, $hMask, $hMaster_Mask
+    Local $tempMouseMode = opt("MouseCoordMode")
+	opt("MouseCoordMode",1)
+
+	Local $aMouse_Pos, $aWin_Pos, $hMask, $hMaster_Mask
 	Local $hRectangle_GUI, $hCross_GUI
     Local $UserDLL = DllOpen("user32.dll")
 	Local $iX1, $iX2, $iY1, $iY2, $aLTRB[4], $iTemp
-
-	Local $tempMouseMode = opt("MouseCoordMode")
-	opt("MouseCoordMode",1)
-
+	Local $aScreen_Pos[4] = [0, 0, @DesktopWidth, @DesktopHeight]
 
 	; If no window handle then don't look for one.
-	if $hwind = 0 then $boundArea = 1
-	Local $aScreen_Pos[4] = [0, 0, @DesktopWidth, @DesktopHeight]
+	if $hwind = 0 then
+		$boundArea = 1
+	Else
+		WinActivate($hwind)
+	EndIf
+
 	Switch $boundArea
 		Case 0
 			$aWin_Pos = WinGetPos($hwind)
@@ -90,7 +88,6 @@ Func MarkRectangle($hwind=0,$boundArea=1,$showTransparent=False)
     GUISetState(@SW_SHOW, $hCross_GUI)
     GUISetCursor(3, 1, $hCross_GUI)
 
-    ;$hRectangle_GUI = GUICreate("",  $aWin_Pos[2], $aWin_Pos[3], $aWin_Pos[0], $aWin_Pos[1], $WS_POPUP, $WS_EX_TOOLWINDOW + $WS_EX_TOPMOST)
 	$hRectangle_GUI = GUICreate("",  $aScreen_Pos[2], $aScreen_Pos[3], $aScreen_Pos[0], $aScreen_Pos[1], $WS_POPUP, $WS_EX_TOOLWINDOW + $WS_EX_TOPMOST)
     GUISetBkColor(0x000000) ;Selection box color.
 
@@ -157,34 +154,99 @@ Func MarkRectangle($hwind=0,$boundArea=1,$showTransparent=False)
 	GUIDelete($hCross_GUI)
 	DllClose($UserDLL)
 
-	sleep(500)
-
 	opt("MouseCoordMode",$tempMouseMode) ;reset to original chordinate mode.
 	Return $aLTRB
 
 EndFunc   ;==>Mark_Rect
 
 
-Func GetPixelPosAndColor($MouseChordMode=1)
-	Local $aPixelColor[4]
-	Local $aMousePos = MouseGetPos()
-	Local $color = PixelGetColor($aMousePos[0],$aMousePos[1])
-
+Func GetPixelPosAndColor($hwind=0,$boundArea=1,$showTip=False)
+	;Insure that MouseChordMode is default.
 	Local $tempMouseMode = opt("MouseCoordMode")
-	opt("MouseCoordMode",$MouseChordMode)
+	opt("MouseCoordMode",1)
 
-	Local $bMousePos = MouseGetPos()
+	;Define variables
+	Local $aPixelColor[3], $aMousePos, $color, $hCross_GUI, $aWin_Pos
+	Local $UserDLL = DllOpen("user32.dll")
+	Local $aScreen_Pos[4] = [0, 0, @DesktopWidth, @DesktopHeight]
+
+	if $hwind = 0 then	$boundArea = 1
+
+	Switch $boundArea
+		Case 0
+			$aWin_Pos = WinGetPos($hwind)
+		Case 1
+			$aWin_Pos = $aScreen_Pos
+		Case 2
+			$aWin_Pos = WinGetClientPos($hwind)
+	EndSwitch
+
+	; Create transparent GUI with Cross cursor
+	$hCross_GUI = GUICreate("", $aWin_Pos[2], $aWin_Pos[3] - 20,$aWin_Pos[0] , $aWin_Pos[1] , $WS_POPUP, $WS_EX_TOPMOST)
+	WinSetTrans($hCross_GUI, "", 8)
+    GUISetState(@SW_SHOW, $hCross_GUI)
+    GUISetCursor(3, 1, $hCross_GUI)
 
 
-	$aPixelColor[0] = $bMousePos[0]
-	$aPixelColor[1] = $bMousePos[1]
+	While Not _IsPressed("01", $UserDLL)
+		if $showTip Then
+			$aMousePos= MouseGetPos()
+			$color= PixelGetColor($aMousePos[0], $aMousePos[1])
+			ToolTip("Pos: x = " & $aMousePos[0]-$aWin_Pos[0] & ", y = " & $aMousePos[1]-$aWin_Pos[1] & @CRLF & _
+				"Color = 0x" & Hex($Color, 6))
+		EndIf
+        Sleep(10)
+    WEnd
+
+	if $showTip Then ToolTip("")
+
+	$aMousePos = MouseGetPos()
+	$color = PixelGetColor($aMousePos[0],$aMousePos[1])
+
+	While _IsPressed("01", $UserDLL)
+        Sleep(10)
+    WEnd
+
+
+
+	$aPixelColor[0] = $aMousePos[0] - $aWin_Pos[0]
+	$aPixelColor[1] = $aMousePos[1] - $aWin_Pos[1]
 	$aPixelColor[2] = $color
-	$aPixelColor[3] = 0
 
+	;clean up
+	GUIDelete($hCross_GUI)
+	DllClose($UserDLL)
 	opt("MouseCoordMode",$tempMouseMode)
+
 	Return $aPixelColor
 
 EndFunc   ;==>GetPixelPosAndColor
+
+
+
+Func GetColorDiff(Const $color, Const $center)
+   Local $r = BitShift(BitAND($color, 0x00FF0000), 16)
+   Local $g = BitShift(BitAND($color, 0x0000FF00), 8)
+   Local $b = BitAND($color, 0x000000FF)
+
+   Local $rC = BitShift(BitAND($center, 0x00FF0000), 16)
+   Local $gC = BitShift(BitAND($center, 0x0000FF00), 8)
+   Local $bC = BitAND($center, 0x000000FF)
+
+   return Sqrt( ($rC-$r)^2 + ($gC-$g)^2 + ($bC-$b)^2 )
+
+EndFunc
+
+
+
+
+
+
+
+
+
+
+
 
 
 

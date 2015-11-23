@@ -19,17 +19,19 @@ Global $gRaidLootCharMaps[14][$gRaidLootCharMapsMaxWidth+2] = [ _
 
 ; MyGold, MyElixir, MyDark, MyGems, RaidTroopCounts
 Global $gSmallCharMapsMaxWidth = 9
-Global $gSmallCharacterMaps[18][$gSmallCharMapsMaxWidth+2] = [ _
- ["0", 7, 126, 255, 129, 129, 129, 255, 255], _
+Global $gSmallCharacterMaps[21][$gSmallCharMapsMaxWidth+2] = [ _
+ ["0", 7, 126, 255, 129, 129, 129, 255, 255], _	; ok
  ["0", 9, 254, 511, 511, 385, 257, 259, 511, 511, 124], _
  ["1", 2, 128, 128], _
  ["1", 2, 127, 224], _
  ["1", 3, 256, 511, 510], _
  ["2", 6, 15, 271, 283, 305, 481, 224], _
  ["3", 6, 257, 273, 273, 499, 222, 14], _
+ ["3", 6, 198, 390, 273, 273, 434, 494], _		;dddddd.clash - My Clan info font
  ["4", 7, 28, 124, 204, 388, 255, 255, 12], _
  ["4", 8, 24, 120, 488, 264, 264, 511, 511, 8], _
  ["5", 6, 241, 241, 401, 282, 286, 270], _
+ ["5", 6, 486,483,289,273,275,286], _ 			; dddddd.clash - My clan info font
  ["6", 7, 254, 254, 403, 273, 275, 286, 12], _
  ["7", 6, 256, 263, 286, 504, 448, 256], _
  ["7", 4, 263, 286, 504, 480], _
@@ -37,6 +39,7 @@ Global $gSmallCharacterMaps[18][$gSmallCharMapsMaxWidth+2] = [ _
  ["9", 7, 240, 241, 401, 402, 414, 254, 24], _
  ["x", 7, 1, 231, 126, 60, 60, 103, 193], _
  ["x", 6, 99, 62, 28, 28, 34, 65], _
+ ["/", 5, 1, 7, 60, 240, 128], _				; dddddd.clash - My clan info font
  ["+", 4, 4, 31, 31, 4] ]
 
 ; MyCups, TrainTroops Window

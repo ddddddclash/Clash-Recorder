@@ -154,7 +154,7 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 			Next
 
 			; Calculate colValues for this test width
-			If $gc_ScraperDebug Then ConsoleWrite("TestWidth=" & $testWidth & " ColValues=")
+			If $gc_ScraperDebug Then DebugWritePlain("TestWidth=" & $testWidth & " ColValues=")
 			For $cX = 0 To $testWidth-1
 			   Local $factor = 1
 			   $colValues[$cX] = 0
@@ -162,15 +162,15 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 				  $colValues[$cX] += ($pix[$charStart+$cX][$cY] * $factor)
 				  $factor*=2
 			   Next
-			   If $gc_ScraperDebug Then ConsoleWrite($colValues[$cX] & ", ")
+			   If $gc_ScraperDebug Then DebugWritePlain($colValues[$cX] & ", ")
 			Next
-			If $gc_ScraperDebug Then ConsoleWrite(@CRLF)
+			If $gc_ScraperDebug Then DebugWritePlain(@CRLF)
 
 			; Find a match
 			Local $weight
 			Local $bestMatchIndex = FindFuzzyCharInArray($charMapArray, $colValues, $testWidth, $weight)
 
-			If $gc_ScraperDebug Then ConsoleWrite("width=" & $testWidth & " index=" & $bestMatchIndex & " weight=" & $weight & "(bestweight=" & $bestWeight & ")" & @CRLF)
+			If $gc_ScraperDebug Then DebugWritePlain("width=" & $testWidth & " index=" & $bestMatchIndex & " weight=" & $weight & "(bestweight=" & $bestWeight & ")" & @CRLF)
 			If $bestMatchIndex<>-1 And $weight<1 And $weight<$bestWeight Then
 			   $largestMatchIndex = $bestMatchIndex
 			   $bestWidth = $testWidth
@@ -181,7 +181,7 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 
 	  ; Debug
 	  If $gc_ScraperDebug And $charEnd<>-1 Then
-		 ConsoleWrite($charStart & " to " & $charStart+$bestWidth-1 & ": " & _
+		 DebugWritePlain($charStart & " to " & $charStart+$bestWidth-1 & ": " & _
 						($largestMatchIndex<>-1 ? $charMapArray[$largestMatchIndex][0] : "`" ) & @CRLF)
 	  EndIf
 
@@ -200,20 +200,20 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 
    ; Debug
    If $gc_ScraperDebug Then
-	  ConsoleWrite($textString & @CRLF)
-	  ConsoleWrite("-------------------------------------------------------------------------" & @CRLF)
+	  DebugWritePlain($textString & @CRLF)
+	  DebugWritePlain("-------------------------------------------------------------------------" & @CRLF)
 	  For $y = 0 To $pY-1
-		ConsoleWrite("|")
+		DebugWritePlain("|")
 		 For $x = 0 To $w-1
 			If $pix[$x][$y] = 1 Then
-			   ConsoleWrite("x")
+			   DebugWritePlain("x")
 			Else
-			   ConsoleWrite(" ")
+			   DebugWritePlain(" ")
 			EndIf
 		 Next
-		 ConsoleWrite("|" & @CRLF)
+		 DebugWritePlain("|" & @CRLF)
 	  Next
-	  ConsoleWrite("-------------------------------------------------------------------------" & @CRLF)
+	  DebugWritePlain("-------------------------------------------------------------------------" & @CRLF)
    EndIf
 
    Return $textString

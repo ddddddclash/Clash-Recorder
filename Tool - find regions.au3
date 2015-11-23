@@ -1,17 +1,13 @@
-#include <Array.au3>
-
-#include "settings/Constants.au3"
-#include "settings/Globals.au3"
-#include "settings/Settings.au3"
-#include "lib/Debug/Debug.au3"
-#include "lib/Debug/Drawing.au3"
-
-;Includes for Gui
 #include <ButtonConstants.au3>
 #include <ComboConstants.au3>
 #include <EditConstants.au3>
 #include <GUIConstantsEx.au3>
 #include <WindowsConstants.au3>
+#include <Array.au3>
+
+#include "settings/Constants.au3"
+#include "lib/Debug/Debug.au3"
+#include "lib/Debug/Drawing.au3"
 
 
 Opt("MustDeclareVars",1)
@@ -20,19 +16,13 @@ Opt("GUIOnEventMode",1)
 HotKeySet ("{esc}", "Die")
 
 
-;Globals that need to be converted.
+;Globals that need to be converted for CodeSlinger68
 Global $gTitle = $BS_TITLE
-
+Global $gc_ScraperDebug = True
 
 #include "lib/CodeSlinger69/CharMaps.au3"
 #include "lib/CodeSlinger69/RegionDefs.au3"
-#include "lib/CodeSlinger69/FileNames.au3"
-
-#include "lib/CodeSlinger69/KeepOnline.au3"
-#include "lib/CodeSlinger69/Mouse.au3"
 #include "lib/CodeSlinger69/Scraper.au3"
-#include "lib/CodeSlinger69/Screen.au3"
-#include "lib/CodeSlinger69/TownHall.au3"
 
 
 ; this is important and should be included in the final version.
@@ -87,7 +77,9 @@ GUISetState(@SW_SHOW)
 
 HotKeySet("^f", "DebugToFront")
 HotKeySet("^n", "NewCanvas") ; New debug canvas
+
 InitScraper()
+DebugDrawingEnable()
 DebugCreateCanvas()
 
 While 1
@@ -165,3 +157,6 @@ Func Die()
 	GUIDelete($hGUI)
 	Exit
 EndFunc
+
+
+
