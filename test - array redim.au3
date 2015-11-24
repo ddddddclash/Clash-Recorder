@@ -1,4 +1,8 @@
-#include-once
+#include <Array.au3>
+
+Global $yourAr
+
+
 
 Global $g_CharMapsAll = "$gRaidLootCharMaps|$gSmallCharMaps|$gLargeCharMaps|$gExtraLargeCharMaps|$gChatCharMaps|$gArmyCampCharMaps|$gBarracksStatusCharMaps"
 
@@ -239,3 +243,37 @@ Global $gBarracksStatusCharMaps[20][$gBarracksStatusCharMapsMaxWidth+2] = [ _
  ["s", 5, 57, 57, 41, 38, 6], _
  ["T", 6, 192, 192, 255, 255, 192, 128], _
  ["/", 5, 3, 15, 60, 112, 192] ]
+
+
+$CmapArray = StringSplit($g_CharMapsAll,"|",2)
+Global $lookup_array = $CmapArray
+_ArrayTranspose($lookup_array)
+
+;Global $mdarray[UBound($CmapArray)][4]
+Global $mdarray[0][4]
+For $i = 0 to UBound($CmapArray)-1
+	ReDim $mdarray[$i+1 ][4]
+	$mdarray [$i][0] = $CmapArray[$i]
+	$mdarray [$i][1] = Execute($CmapArray[$i]&"MaxHeight")
+	$mdarray [$i][2] = Execute($CmapArray[$i]&"MaxWidth")
+	$mdarray [$i][3] = Execute($CmapArray[$i])
+Next
+
+#cs
+
+For $i = 0 To 5
+    $retNew = InputBox("Extend array", "Add something new to this array:")
+    If IsArray($yourAr) = 1 Then
+        $Bound = UBound($yourAr)
+        ReDim $yourAr[$Bound+1]
+        $yourAr[$Bound] = $retNew
+    Else
+        Dim $yourAr[1]
+        $yourAr[0] = $retNew
+    EndIf
+Next
+#ce
+
+
+;ConsoleWrite("is array " & IsArray($mdarray [1][3])&@CRLF)
+_ArrayDisplay($mdarray)

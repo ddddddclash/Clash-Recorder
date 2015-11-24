@@ -411,7 +411,7 @@ Func FindFuzzyCharInArray(Const ByRef $charMapArray, Const ByRef $nums, Const $w
    Next
 
    ; Debug
-   ;DebugWrite("Best " & $bestMatch & " " & $bestWeightedHD & @CRLF)
+   DebugWrite("Best " & $bestMatch & " " & $bestWeightedHD & @CRLF)
 
    Return $bestMatch
 EndFunc

@@ -1,7 +1,5 @@
 #include-once
 
-Global $g_CharMapsAll = "$gRaidLootCharMaps|$gSmallCharMaps|$gLargeCharMaps|$gExtraLargeCharMaps|$gChatCharMaps|$gArmyCampCharMaps|$gBarracksStatusCharMaps"
-
 ; Raid loot gold 13, elix 3, dark 3, cups 6
 Global $gRaidLootCharMapsMaxHeight = 9 ; 818 2^10-1s
 Global $gRaidLootCharMapsMaxWidth = 13
@@ -23,7 +21,7 @@ Global $gRaidLootCharMaps[14][$gRaidLootCharMapsMaxWidth+2] = [ _
 ; MyGold, MyElixir, MyDark, MyGems, RaidTroopCounts
 Global $gSmallCharMapsMaxHeight = 8 ;511 2^9-1
 Global $gSmallCharMapsMaxWidth = 9
-Global $gSmallCharMaps[21][$gSmallCharMapsMaxWidth+2] = [ _
+Global $gSmallCharacterMaps[21][$gSmallCharMapsMaxWidth+2] = [ _
  ["0", 7, 126, 255, 129, 129, 129, 255, 255], _	; ok
  ["0", 9, 254, 511, 511, 385, 257, 259, 511, 511, 124], _
  ["1", 2, 128, 128], _
@@ -49,7 +47,7 @@ Global $gSmallCharMaps[21][$gSmallCharMapsMaxWidth+2] = [ _
 ; MyCups, TrainTroops Window
 Global $gLargeCharMapsMaxHeight = 11 ;4067 2^12-1
 Global $gLargeCharMapsMaxWidth = 10
-Global $gLargeCharMaps[26][$gLargeCharMapsMaxWidth+2] = [ _
+Global $gLargeCharacterMaps[26][$gLargeCharMapsMaxWidth+2] = [ _
 ["0", 10, 508, 1023, 2047, 1795, 1539, 1539, 1539, 2047, 2047, 1022], _
 ["1", 4, 256, 511, 511, 384], _
 ["1", 4, 512, 1023, 1023, 1023], _
@@ -80,7 +78,7 @@ Global $gLargeCharMaps[26][$gLargeCharMapsMaxWidth+2] = [ _
 ; Battle end window
 Global $gExtraLargeCharMapsMaxheight = 14 ;  16383 or 2^15 - 1
 Global $gExtraLargeCharMapsMaxWidth = 23
-Global $gExtraLargeCharMaps[14][$gExtraLargeCharMapsMaxWidth+2] = [ _
+Global $gExtraLargeCharacterMaps[14][$gExtraLargeCharMapsMaxWidth+2] = [ _
 ["0", 13, 2044, 4094, 8191, 8191, 7951, 6147, 6147, 6147, 6151, 8191, 8191, 8191, 4092], _
 ["1", 5, 2048, 4064, 4095, 4095, 4095], _
 ["2", 10, 4158, 4223, 4223, 4351, 4327, 4551, 7111, 8071, 8070, 7942], _
@@ -101,7 +99,7 @@ Global $gExtraLargeCharMaps[14][$gExtraLargeCharMapsMaxWidth+2] = [ _
 ; Note, no difference between number 8 and Upper B
 Global $gChatCharMapsMaxHeight = 6 ;127 or 2^7 -1
 Global $gChatCharMapsMaxWidth = 8
-Global $gChatCharMaps[91][$gChatCharMapsMaxWidth+2] = [ _
+Global $gChatCharacterMaps[91][$gChatCharMapsMaxWidth+2] = [ _
 ["a", 5, 7, 23, 21, 29, 31], _
 ["a", 5, 2, 23, 21, 29, 31], _
 ["b", 4, 127, 17, 17, 14], _
@@ -203,7 +201,7 @@ Global $gChatCharMaps[91][$gChatCharMapsMaxWidth+2] = [ _
 ; Army Camp Troop Counts
 Global $gArmyCampCharMapsMaxHeight = 7 ;255 or 2^8 -1
 Global $gArmyCampCharMapsMaxWidth = 8
-Global $gArmyCampCharMaps[10][$gArmyCampCharMapsMaxWidth+2] = [ _
+Global $gArmyCampCharacterMaps[10][$gArmyCampCharMapsMaxWidth+2] = [ _
  ["0", 7, 126, 127, 65, 65, 65, 127, 62], _
  ["1", 1, 127], _
  ["2", 5, 7, 143, 153, 241, 224], _
@@ -218,7 +216,7 @@ Global $gArmyCampCharMaps[10][$gArmyCampCharMapsMaxWidth+2] = [ _
 ; Barracks Status
 Global $gBarracksStatusCharMapsMaxHeight = 7 ;255 or 2^8 -1
 Global $gBarracksStatusCharMapsMaxWidth = 8
-Global $gBarracksStatusCharMaps[20][$gBarracksStatusCharMapsMaxWidth+2] = [ _
+Global $gBarracksStatusCharacterMaps[20][$gBarracksStatusCharMapsMaxWidth+2] = [ _
  ["0", 7, 127, 255, 193, 193, 195, 255, 126], _
  ["1", 1, 255], _
  ["2", 5, 143, 143, 155, 241, 241], _
