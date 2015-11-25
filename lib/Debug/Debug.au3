@@ -19,6 +19,7 @@
 #include <Date.au3>
 
 ;Not truely private but marked as such to show intention
+;consider a  variable of the form $privX0001_hEdit instead, Less likely to be used by accident.
 Global $private_Debug_hEdit
 Global $private_Debug_console = False
 Global $private_Debug_Log = False

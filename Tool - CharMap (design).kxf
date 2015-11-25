@@ -169,8 +169,8 @@
 		</object>
 		<object type="TALabel" name="Label3">
 			<properties>
-				<property name="Left" vt="Int8">36</property>
-				<property name="Top" vt="Int8">68</property>
+				<property name="Left" vt="Int16">132</property>
+				<property name="Top" vt="Int8">38</property>
 				<property name="Width" vt="Int8">67</property>
 				<property name="Height" vt="Int8">17</property>
 				<property name="Caption" vt="String">Color Radius:</property>
@@ -184,7 +184,7 @@
 		</object>
 		<object type="TALabel" name="Label4">
 			<properties>
-				<property name="Left" vt="Int8">58</property>
+				<property name="Left" vt="Int8">10</property>
 				<property name="Top" vt="Int8">38</property>
 				<property name="Width" vt="Int8">45</property>
 				<property name="Height" vt="Int8">17</property>
@@ -214,9 +214,9 @@
 		</object>
 		<object type="TAInput" name="inp_Color">
 			<properties>
-				<property name="Left" vt="Int8">106</property>
-				<property name="Top" vt="Int8">36</property>
-				<property name="Width" vt="Int16">201</property>
+				<property name="Left" vt="Int8">10</property>
+				<property name="Top" vt="Int8">56</property>
+				<property name="Width" vt="Int8">97</property>
 				<property name="Height" vt="Int8">21</property>
 				<property name="TabOrder" vt="Int8">11</property>
 				<property name="Text" vt="String">inp_Color</property>
@@ -228,9 +228,9 @@
 		</object>
 		<object type="TAInput" name="inp_ColorRadius">
 			<properties>
-				<property name="Left" vt="Int8">106</property>
-				<property name="Top" vt="Int8">64</property>
-				<property name="Width" vt="Int16">201</property>
+				<property name="Left" vt="Int16">130</property>
+				<property name="Top" vt="Int8">56</property>
+				<property name="Width" vt="Int8">65</property>
 				<property name="Height" vt="Int8">21</property>
 				<property name="TabOrder" vt="Int8">12</property>
 				<property name="Text" vt="String">inp_ColorRadius</property>
@@ -266,6 +266,35 @@
 				<property name="CtrlStyle" vt="Int32">1342373888</property>
 				<property name="CtrlExStyle" vt="Int8">0</property>
 				<property name="Resizing" vt="Set">DockWidth, DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TAInput" name="inp_MaxWidth">
+			<properties>
+				<property name="Left" vt="Int16">224</property>
+				<property name="Top" vt="Int8">56</property>
+				<property name="Width" vt="Int8">81</property>
+				<property name="Height" vt="Int8">21</property>
+				<property name="TabOrder" vt="Int8">15</property>
+				<property name="Text" vt="String">inp_MaxWidth</property>
+				<property name="CtrlStyle" vt="Int32">1342374016</property>
+				<property name="CtrlExStyle" vt="Int16">512</property>
+				<property name="Resizing" vt="Set">DockHeight</property>
+			</properties>
+			<components/>
+		</object>
+		<object type="TALabel" name="Label6">
+			<properties>
+				<property name="Left" vt="Int16">224</property>
+				<property name="Top" vt="Int8">38</property>
+				<property name="Width" vt="Int8">58</property>
+				<property name="Height" vt="Int8">17</property>
+				<property name="Caption" vt="String">Max Width:</property>
+				<property name="TabOrder" vt="Int8">16</property>
+				<property name="HaveVariable" vt="False">False</property>
+				<property name="CtrlStyle" vt="Int32">1342308608</property>
+				<property name="CtrlExStyle" vt="Int8">0</property>
+				<property name="Resizing" vt="Set"/>
 			</properties>
 			<components/>
 		</object>

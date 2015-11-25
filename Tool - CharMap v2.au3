@@ -6,6 +6,7 @@
 #include "lib/Debug/Debug.au3"
 #include "lib/Debug/Drawing.au3"
 #include "lib/Util/info.au3"
+#include "lib/CR/OCR.au3"
 
 ;Includes for Gui
 #include <ButtonConstants.au3>
@@ -28,7 +29,7 @@ Global $gc_ScraperDebug = True
 
 #include "lib/CodeSlinger69/CharMaps.au3"
 #include "lib/CodeSlinger69/RegionDefs.au3"
-#include "lib/CodeSlinger69/Scraper.au3"
+
 
 
 ; this is important and should be included in the final version.
@@ -45,7 +46,7 @@ Local $p = WinGetPos($BS_WIN)
 
 WinActivate ($BS_WIN)
 
-Global $hGUI = GUICreate("Tool - CharMap",$gw, $gh, $p[0] + $p[2] + 8, $p[1] + ($p[3]/2) - ($gh / 2))
+Global $hGUI = GUICreate("Tool - CharMap v2",$gw, $gh, $p[0] + $p[2] + 8, $p[1] + ($p[3]/2) - ($gh / 2))
 GUISetOnEvent($GUI_EVENT_CLOSE, "Die")
 
 ;Menu - Main
@@ -54,8 +55,6 @@ Global $idMenu_ClearBoxes = GUICtrlCreateMenuItem("Clear Boxes", $idMenu_Main)
 GUICtrlSetOnEvent($idMenu_ClearBoxes, "menu_ClearBoxes")
 Global $idMenu_Save = GUICtrlCreateMenuItem("Save", $idMenu_Main)
 GUICtrlSetOnEvent($idMenu_Save, "menu_Save")
-Global $idMenu_Open = GUICtrlCreateMenuItem("Open", $idMenu_Main)
-GUICtrlSetOnEvent($idMenu_Open, "menu_Open")
 ;Menu - Char Map
 Global $idMenu_CharMap = GUICtrlCreateMenu("Char Map")
 Global $idMenu_NewMap = GUICtrlCreateMenuItem("New Map", $idMenu_CharMap)
@@ -125,6 +124,7 @@ For $i = 0 to UBound($g_aCharMapNames)-1
 Next
 
 DebugSetOutput($edit_debug)
+OcrEnableDebug()
 InitScraper()
 
 
@@ -147,9 +147,6 @@ Func menu_ClearBoxes()
 EndFunc
 
 Func menu_Save()
-EndFunc
-
-Func menu_Open()
 EndFunc
 
 Func menu_NewMap()
@@ -238,8 +235,8 @@ Func btnGo_Show()
 		","&$tb[8]&","&$tb[9]&"]"&@CRLF
 	GUICtrlSetData($edit_settings,$temps,1)
 	Local $T1 = TimerInit()
-	GUICtrlSetData($inp_TextResult,ScrapeFuzzyText($cmap,$tb,$width,$eScrapeDropSpaces))
-	ConsoleWrite("T1: " & TimerDiff($T1) & @CRLF)
+	GUICtrlSetData($inp_TextResult,OcrGetText($cmap,$tb,$width,$eScrapeDropSpaces))
+	ConsoleWrite("T1: " & TimerDiff($T1)/1000 & @CRLF)
 
 EndFunc
 
@@ -257,5 +254,8 @@ Func _ArrayCombine(ByRef $array1, ByRef $array2)    ; Adds a row to a 2d array.
     Next
 EndFunc
 
+
+;M|7|126|120|12|7|24|120|127
+;a|4|21|1|21|15
 
 
