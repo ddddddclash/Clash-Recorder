@@ -116,7 +116,7 @@ Func btnGo_Text()
 		"x = "&$A[6]&" y = "&$A[7]&" color = 0x"&hex($A[8])&" r2 = "&$A[9]&@CRLF
 	GUICtrlSetData($Edit1,$tempS&@CRLF,1)
 	GUICtrlSetData($inp_ss_name,StringMid($varname,3)&".bmp")
-	GUICtrlSetData($Edit1,"Small = "&ScrapeFuzzyText($gSmallCharacterMaps,$A,$gSmallCharMapsMaxWidth,$eScrapeDropSpaces)&@CRLF,1)
+	GUICtrlSetData($Edit1,"Small = "&ScrapeFuzzyText($gSmallCharMaps,$A,$gSmallCharMapsMaxWidth,$eScrapeDropSpaces)&@CRLF,1)
 	DebugDrawTextArea($A,$varname)
 
 EndFunc

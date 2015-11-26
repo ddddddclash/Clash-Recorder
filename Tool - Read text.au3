@@ -97,7 +97,7 @@ Func btnGo_Start()
 	Local $temps = "["&$tb[0]&","&$tb[1]&","&$tb[2]&","&$tb[3]&",0x"&hex($tb[4],6)&","&$tb[5]&","&$tb[6]&","&$tb[7]& _
 		","&$tb[8]&","&$tb[9]&"]"&@CRLF
 	GUICtrlSetData($edit_settings,$temps,1)
-	GUICtrlSetData($inp_TextResult,ScrapeFuzzyText($gSmallCharacterMaps,$tb,$gSmallCharMapsMaxWidth,$eScrapeDropSpaces))
+	GUICtrlSetData($inp_TextResult,ScrapeFuzzyText($gSmallCharMaps,$tb,$gSmallCharMapsMaxWidth,$eScrapeDropSpaces))
 
 EndFunc
 

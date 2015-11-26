@@ -155,6 +155,7 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 
 			; Calculate colValues for this test width
 			If $gc_ScraperDebug Then DebugWritePlain("TestWidth=" & $testWidth & " ColValues=")
+			Local $tmpMaps = "|"&$testWidth&"|"
 			For $cX = 0 To $testWidth-1
 			   Local $factor = 1
 			   $colValues[$cX] = 0
@@ -163,8 +164,9 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 				  $factor*=2
 			   Next
 			   If $gc_ScraperDebug Then DebugWritePlain($colValues[$cX] & ", ")
+			   $tmpMaps &= $colValues[$cX] &"|"
 			Next
-			If $gc_ScraperDebug Then DebugWritePlain(@CRLF)
+			If $gc_ScraperDebug Then DebugWritePlain(@CRLF&StringTrimRight($tmpMaps,1)&@CRLF)
 
 			; Find a match
 			Local $weight
@@ -182,7 +184,7 @@ Func ScrapeFuzzyText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 	  ; Debug
 	  If $gc_ScraperDebug And $charEnd<>-1 Then
 		 DebugWritePlain($charStart & " to " & $charStart+$bestWidth-1 & ": " & _
-						($largestMatchIndex<>-1 ? $charMapArray[$largestMatchIndex][0] : "`" ) & @CRLF)
+						($largestMatchIndex<>-1 ? $charMapArray[$largestMatchIndex][0] : "`" ) & @CRLF& @CRLF)
 	  EndIf
 
 	  ; Got a match or not?
@@ -308,13 +310,13 @@ Func ScrapeExactText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 
 	  ; Debug
 	  If $gc_ScraperDebug And $charEnd<>-1 Then
-		 ConsoleWrite($charStart & " to " & _
+		 DebugWritePlain($charStart & " to " & _
 						($largestMatchIndex<>-1 ? $charStart+$charMapArray[$largestMatchIndex][1]-1 : $charStart) & ": " & _
 						($largestMatchIndex<>-1 ? $charMapArray[$largestMatchIndex][0] : "`" ) & " : ")
 		 For $cX = $charStart To ($largestMatchIndex<>-1 ? $charStart+$charMapArray[$largestMatchIndex][1]-1 : $charStart)
-			ConsoleWrite($colValues[$cX-$charStart] & ", ")
+			DebugWritePlain($colValues[$cX-$charStart] & ", ")
 		 Next
-		 ConsoleWrite(@CRLF)
+		 DebugWritePlain(@CRLF)
 	  EndIf
 
 	  ; Got a match or not?
@@ -332,20 +334,20 @@ Func ScrapeExactText(Const ByRef $charMapArray, Const ByRef $textBox, Const $max
 
    ; Debug
    If $gc_ScraperDebug Then
-	  ConsoleWrite($textString & @CRLF)
-	  ConsoleWrite("-------------------------------------------------------------------------" & @CRLF)
+	  DebugWritePlain($textString & @CRLF)
+	  DebugWritePlain("-------------------------------------------------------------------------" & @CRLF)
 	  For $y = 0 To $pY-1
-		ConsoleWrite("|")
+		DebugWritePlain("|")
 		 For $x = 0 To $w-1
 			If $pix[$x][$y] = 1 Then
-			   ConsoleWrite("x")
+			   DebugWritePlain("x")
 			Else
-			   ConsoleWrite(" ")
+			   DebugWritePlain(" ")
 			EndIf
 		 Next
-		 ConsoleWrite("|" & @CRLF)
+		 DebugWritePlain("|" & @CRLF)
 	  Next
-	  ConsoleWrite("-------------------------------------------------------------------------" & @CRLF)
+	  DebugWritePlain("-------------------------------------------------------------------------" & @CRLF)
    EndIf
 
    Return $textString
@@ -396,7 +398,7 @@ Func FindFuzzyCharInArray(Const ByRef $charMapArray, Const ByRef $nums, Const $w
 
 		 ; Loop through each column in the passed in array of numbers
 		 Local $c, $totalHD = 0, $pixels = 0
-		 For $c = 0 To ($width < $charMapArray[$i][1] ? $width-1 : $charMapArray[$i][1]-1)
+		 For $c = 0 To ($width < $charMapArray[$i][1] ? $width-1 : $charMapArray[$i][1]-1)  ; I think that something here is what causes it to see an l and an I the same.
 			$totalHD += CalcHammingDistance($nums[$c], $charMapArray[$i][$c+2])
 			$pixels += BitCount($nums[$c])
 		 Next
@@ -411,7 +413,7 @@ Func FindFuzzyCharInArray(Const ByRef $charMapArray, Const ByRef $nums, Const $w
    Next
 
    ; Debug
-   DebugWrite("Best " & $bestMatch & " " & $bestWeightedHD & @CRLF)
+   DebugWritePlain("Best " & $bestMatch & " " & $bestWeightedHD & @CRLF)
 
    Return $bestMatch
 EndFunc

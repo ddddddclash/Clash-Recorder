@@ -1,4 +1,6 @@
 #include <Array.au3>
+#include <File.au3>
+
 
 #include "settings/Constants.au3"
 #include "settings/Globals.au3"
@@ -52,14 +54,17 @@ GUISetOnEvent($GUI_EVENT_CLOSE, "Die")
 Global $idMenu_Main = GUICtrlCreateMenu("Main")
 Global $idMenu_ClearBoxes = GUICtrlCreateMenuItem("Clear Boxes", $idMenu_Main)
 GUICtrlSetOnEvent($idMenu_ClearBoxes, "menu_ClearBoxes")
-Global $idMenu_Save = GUICtrlCreateMenuItem("Save", $idMenu_Main)
+Global $idMenu_Save = GUICtrlCreateMenuItem("Save All", $idMenu_Main)
 GUICtrlSetOnEvent($idMenu_Save, "menu_Save")
-Global $idMenu_Open = GUICtrlCreateMenuItem("Open", $idMenu_Main)
-GUICtrlSetOnEvent($idMenu_Open, "menu_Open")
+Global $idMenu_Save_Select = GUICtrlCreateMenuItem("Save Selected", $idMenu_Main)
+GUICtrlSetOnEvent($idMenu_Save_Select, "menu_Save_Select")
+
 ;Menu - Char Map
 Global $idMenu_CharMap = GUICtrlCreateMenu("Char Map")
 Global $idMenu_NewMap = GUICtrlCreateMenuItem("New Map", $idMenu_CharMap)
 GUICtrlSetOnEvent($idMenu_NewMap, "menu_NewMap")
+Global $idMenu_Open = GUICtrlCreateMenuItem("Open Map", $idMenu_CharMap)
+GUICtrlSetOnEvent($idMenu_Open, "menu_Open")
 Global $idMenu_MapWidth = GUICtrlCreateMenuItem("Set Width", $idMenu_CharMap)
 GUICtrlSetOnEvent($idMenu_MapWidth, "menu_MapWidth")
 Global $idMenu_MapHeight = GUICtrlCreateMenuItem("Set Height", $idMenu_CharMap)
@@ -134,9 +139,11 @@ While 1
 WEnd
 
 Func Die()
-	ExitScraper()
-	GUIDelete($hGUI)
-	Exit
+	if MsgBox($MB_OKCANCEL,"Warning","Are you sure you want to exit?") = 1 then
+		ExitScraper()
+		GUIDelete($hGUI)
+		Exit
+	EndIf
 EndFunc
 
 
@@ -147,22 +154,53 @@ Func menu_ClearBoxes()
 EndFunc
 
 Func menu_Save()
+	Local $filename
+	;no sanity check except to remove $
+	For $i = 0 to UBound($map_array,1)
+		$filename = StringReplace($map_array[$i][0],'$','')&".cmap"
+		_FileWriteFromArray(@ScriptDir&"\charmaps\"&$filename,$map_array[$i][3])
+	Next
+EndFunc
+
+Func menu_Save_Select()
+	Local $filename = StringReplace($map_array[$map_idx][0],'$','')&".cmap"
+	_FileWriteFromArray(@ScriptDir&"\charmaps\"&$filename,$map_array[$map_idx][3])
 EndFunc
 
 Func menu_Open()
+	Local $filename = FileOpenDialog ( "Open", @ScriptDir&"\charmaps\", "Char Maps(*.cmap)")
+	Local $mapName = StringTrimRight(StringMid($filename,StringInStr($filename,"\",0,-1)+1),5)
+	Local $aTemp, $tempmap, $cmap[0][0]
+	_FileReadToArray($filename,$aTemp,$FRTA_INTARRAYS)  ; Returns an Array of Strings
+	for $i = 0 to UBound($aTemp)-1
+		$tempmap = StringSplit($aTemp[$i],"|",2)
+		for $j = 1 to UBound($tempMap)-1
+			$tempMap[$j] = Number($tempMap[$j])	; All but first element are numbers
+		Next
+		_ArrayCombine($cmap,$tempMap)
+	Next
+	_ArrayDisplay($cmap)
+	NewMap($mapName,UBound($cmap,2)-2,0,$cmap)
+
+
+EndFunc
+
+Func NewMap($name,$width,$height,$map)
+	$map_idx = UBound($map_array)
+	ReDim $map_array[$map_idx+1 ][4]
+	$map_array[$map_idx][0]= $name
+	$map_array[$map_idx][1]= $width
+	$map_array[$map_idx][2]= $height
+	$map_array[$map_idx][3]= $map
+	$g_CharMapsAll &= "|"&$name
+	$g_aCharMapNames = StringSplit($g_CharMapsAll,"|",2)
+	GUICtrlSetData($comb_Map,"|Select Character Map|"&$g_CharMapsAll,$name )
+	GUICtrlSetData($inp_MaxWidth,$map_array[$map_idx][1])
 EndFunc
 
 Func menu_NewMap()
-	$map_idx = UBound($map_array)
-	ReDim $map_array[$map_idx+1 ][4]
 	Local $str = InputBox("New Char Map", "Enter the name of the charmap")
-	$map_array[$map_idx][0]= $str
-	$map_array[$map_idx][1]= 10
-	$map_array[$map_idx][2]= 0
-	$map_array[$map_idx][3]= $map_default
-	$g_CharMapsAll &= "|"&$str
-	$g_aCharMapNames = StringSplit($g_CharMapsAll,"|",2)
-	GUICtrlSetData($comb_Map,"|Select Character Map|"&$g_CharMapsAll,$str )
+	NewMap($str,10,0,$map_default)
 EndFunc
 
 Func menu_MapWidth()
@@ -237,9 +275,9 @@ Func btnGo_Show()
 	Local $temps = "["&$tb[0]&","&$tb[1]&","&$tb[2]&","&$tb[3]&",0x"&hex($tb[4],6)&","&$tb[5]&","&$tb[6]&","&$tb[7]& _
 		","&$tb[8]&","&$tb[9]&"]"&@CRLF
 	GUICtrlSetData($edit_settings,$temps,1)
-	Local $T1 = TimerInit()
-	GUICtrlSetData($inp_TextResult,ScrapeFuzzyText($cmap,$tb,$width,$eScrapeDropSpaces))
-	ConsoleWrite("T1: " & TimerDiff($T1) & @CRLF)
+	;GUICtrlSetData($inp_TextResult,ScrapeFuzzyText($cmap,$tb,$width,$eScrapeDropSpaces))
+	;Test
+	GUICtrlSetData($inp_TextResult,StringReplace(ScrapeFuzzyText($cmap,$tb,$width,$eScrapeDropSpaces),"1h","h"))
 
 EndFunc
 
