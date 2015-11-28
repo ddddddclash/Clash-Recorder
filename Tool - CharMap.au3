@@ -1,3 +1,8 @@
+;Char map define and test tool.
+;	Author: dddddd.clash
+;	Date: 2015/11/24
+;	Next revision remove Code Slinger's regions and Charmaps.  None work for the small screen.
+
 #include <Array.au3>
 #include <File.au3>
 
@@ -52,8 +57,10 @@ GUISetOnEvent($GUI_EVENT_CLOSE, "Die")
 
 ;Menu - Main
 Global $idMenu_Main = GUICtrlCreateMenu("Main")
-Global $idMenu_ClearBoxes = GUICtrlCreateMenuItem("Clear Boxes", $idMenu_Main)
-GUICtrlSetOnEvent($idMenu_ClearBoxes, "menu_ClearBoxes")
+Global $idMenu_ClearDebug = GUICtrlCreateMenuItem("Clear Debug", $idMenu_Main)
+GUICtrlSetOnEvent($idMenu_ClearDebug, "menu_ClearDebug")
+Global $idMenu_ClearAll = GUICtrlCreateMenuItem("Clear All", $idMenu_Main)
+GUICtrlSetOnEvent($idMenu_ClearAll, "menu_ClearAll")
 Global $idMenu_Save = GUICtrlCreateMenuItem("Save All", $idMenu_Main)
 GUICtrlSetOnEvent($idMenu_Save, "menu_Save")
 Global $idMenu_Save_Select = GUICtrlCreateMenuItem("Save Selected", $idMenu_Main)
@@ -107,7 +114,7 @@ GUICtrlCreateLabel("Text Result:", 328, 8, 61, 17)
 GUICtrlCreateLabel("Recent Settings", 328, 64, 80, 17)
 Global $inp_TextResult = GUICtrlCreateInput("", 328, 32, 273, 21, BitOR($GUI_SS_DEFAULT_INPUT,$ES_READONLY))
 Global $edit_settings = GUICtrlCreateEdit("", 328, 88, 273, 113, BitOR($ES_READONLY,$WS_VSCROLL))
-Global $edit_debug = GUICtrlCreateEdit("", 8, 208, 801, 201, BitOR($ES_READONLY,$WS_VSCROLL))
+Global $edit_debug = GUICtrlCreateEdit("", 8, 208, 801, 201, BitOR($ES_READONLY,$WS_VSCROLL,$WS_HSCROLL))
 GUICtrlSetFont($edit_debug, 9, 400, 0, "Courier New")
 
 
@@ -147,7 +154,11 @@ Func Die()
 EndFunc
 
 
-Func menu_ClearBoxes()
+Func menu_ClearDebug()
+	GUICtrlSetData($edit_debug,"")
+EndFunc
+
+Func menu_ClearAll()
 	GUICtrlSetData($edit_debug,"")
 	GUICtrlSetData($inp_TextResult,"")
 	GUICtrlSetData($edit_settings,"")
@@ -179,7 +190,7 @@ Func menu_Open()
 		Next
 		_ArrayCombine($cmap,$tempMap)
 	Next
-	_ArrayDisplay($cmap)
+	;_ArrayDisplay($cmap)
 	NewMap($mapName,UBound($cmap,2)-2,0,$cmap)
 
 
@@ -265,7 +276,7 @@ Func btnGo_AddMap()
 EndFunc
 
 Func btnGo_Show()
-	menu_ClearBoxes()
+	menu_ClearDebug()
 	Local $color = GUICtrlRead($inp_Color)
 	Local $radius = GUICtrlRead($inp_ColorRadius)
 	Local $rect = StringSplit(GUICtrlRead($inp_TextBox),"|",2)

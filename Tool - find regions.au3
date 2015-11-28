@@ -1,3 +1,6 @@
+; Good current tool.
+; Answered my questions, but I don't need to convert much.
+
 #include <ButtonConstants.au3>
 #include <ComboConstants.au3>
 #include <EditConstants.au3>

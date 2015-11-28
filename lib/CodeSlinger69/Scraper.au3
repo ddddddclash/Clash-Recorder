@@ -583,6 +583,8 @@ Func GrabFrameToFile(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
 EndFunc
 
 ;This is my version that does not require _GDIPlus
+; Moved to info.au3
+#cs
 Func GrabFrameToFile2(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
    Local $cPos = GetClientPos()
    If $x1 = -1 Then
@@ -592,6 +594,6 @@ Func GrabFrameToFile2(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
    EndIf
 
 EndFunc
-
+#ce
 
 

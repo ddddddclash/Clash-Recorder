@@ -1,3 +1,6 @@
+;Old, Replaced by: Tool - CharMap.au3
+
+
 #include <Array.au3>
 
 #include "settings/Constants.au3"

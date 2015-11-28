@@ -4,20 +4,25 @@
 #include <GuiRichEdit.au3>
 #include <WindowsConstants.au3>
 #Include <Misc.au3>
+#include <ScreenCapture.au3>
 ;#Include <WinAPI.au3>
+#include <Array.au3>
 
 
 Global $private_info_hWin
 
-Func InfoInitialize($hwind=0,$boundArea=1,$showTransparent = False)
+;Func InfoInitialize($hwind=0,$boundArea=1,$showTransparent = False)
+;EndFunc
+;Func InfoDestroy()
+;EndFunc
 
+Func InfoSetHWin($hwind)
+	$private_info_hWin = $hwind
 EndFunc
 
-Func InfoDestroy()
-EndFunc
 
-
-Func WinGetClientPos($hwind)
+; Returns [x,y,width,height]
+Func WinGetClientPos($hwind = $private_info_hWin)
 	WinActivate ($hwind)
 	local $aWin_Pos = WinGetPos($hwind)
 	Local $cSize = WinGetClientSize($hwind)
@@ -32,8 +37,6 @@ Func WinGetClientPos($hwind)
 
 	Return $cPos
 EndFunc
-
-
 
 
 ;============================================================
@@ -241,8 +244,40 @@ EndFunc
 
 
 
+;This is my version that does not require _GDIPlus
+Func GrabFrameToFile2(Const $filename, $x1=-1, $y1=-1, $x2=-1, $y2=-1)
+   Local $cPos = WinGetClientPos()
+   $cPos[2] += $cPos[0]-1
+   $cPos[3] += $cPos[1]-1
+   If $x1 = -1 Then
+		_ScreenCapture_Capture($filename, $cPos[0], $cPos[1], $cPos[2], $cPos[3], False)
+   Else
+		_ScreenCapture_Capture($filename, $cPos[0]+$x1, $cPos[1]+$y1, $cPos[0]+$x2, $cPos[1]+$y2, False)
+   EndIf
+
+EndFunc
+
+Func Make_Image($hwind, $aLTRB)
+	Local Static $n
+	$n+=1
+	_ScreenCapture_CaptureWnd(uniqueFilename(@ScriptDir & "\capFile"&$n&".jpg"), $hwind, $aLTRB[0], $aLTRB[1], $aLTRB[2], $aLTRB[3],False)
+	;_ScreenCapture_Capture(@ScriptDir & "\capFile"&$n&".jpg", $aLTRB[0], $aLTRB[1], $aLTRB[2], $aLTRB[3], False)
 
 
+EndFunc ;==> Make_Image
+
+Func uniqueFilename($filename)
+	Local $temp = $filename
+	Local $iPosition = StringInStr($filename, ".", 0, -1)
+	Local $file_path_and_name = StringMid($filename,1,$iPosition-1)
+	Local $file_extention = StringMid($filename,$iPosition)
+	Local $i=1
+	while FileExists($temp)
+		$temp = $file_path_and_name &"("&$i&")"&$file_extention
+		$i+=1
+	WEnd
+	Return $temp
+EndFunc
 
 
 
