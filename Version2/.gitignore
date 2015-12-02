@@ -45,3 +45,5 @@ Temporary Items
 #Log Files - Clash Recorder
 *.log
 conversion/
+*.xls#
+.~lock.Text Boxes.xls#
